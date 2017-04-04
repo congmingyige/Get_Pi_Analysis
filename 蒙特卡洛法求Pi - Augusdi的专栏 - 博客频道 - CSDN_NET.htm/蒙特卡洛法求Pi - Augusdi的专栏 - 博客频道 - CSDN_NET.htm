@@ -1,0 +1,1348 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0053)http://blog.csdn.net/augusdi/article/details/12438159 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+      
+<SCRIPT src="http://c.csdnimg.cn/pubfooter/js/tracking.js" type="text/javascript" charset="utf-8"></SCRIPT>
+      
+<SCRIPT type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+    
+<META http-equiv="Cache-Control" content="no-siteapp"><LINK href="#" rel="alternate" 
+media="handheld">     <TITLE>蒙特卡洛法求Pi - Augusdi的专栏         - 博客频道 - 
+CSDN.NET</TITLE>     
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">     
+<META name="description" content="编程实现如下模拟：飞镖被随机地投掷到以（1，1）和（-1，-1）为对角的正方形内。若飞镖落在单位圆内【即以（0，0）为圆心，1为半径的圆】，算命中。否则未命中。运行这个模拟并用它求PI的近似值。&nbsp;模型如下图所示：&nbsp;// Circle_PI.cpp : 定义控制台应用程序的入口点。//#include #include #include #include using namespac"> 
+    
+<SCRIPT src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></SCRIPT>
+       
+<SCRIPT src="http://static.blog.csdn.net/scripts/jquery-version.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="http://static.blog.csdn.net/scripts/ad.js?v=1.1" type="text/javascript"></SCRIPT>
+         <!--new top-->                <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css" 
+rel="stylesheet">         <!--new top-->           <!-- ad begin -->          
+<SCRIPT language="javascript" src="http://ads.csdn.net/js/tracking.js" type="text/javascript"></SCRIPT>
+     <!-- ad end-->     <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css" 
+rel="Stylesheet" type="text/css">     <LINK title="RSS" id="RSSLink" href="/Augusdi/rss/list" 
+rel="alternate" type="application/rss+xml">     <LINK href="http://c.csdnimg.cn/public/favicon.ico" 
+rel="shortcut icon">     <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css" 
+rel="stylesheet" type="text/css">  
+<SCRIPT>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+</SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.10570.1001"></HEAD> 
+<BODY><!-- 广告位开始 -->         <INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="149"></INS>     <!-- 广告位结束 -->              <!--new top-->   
+  
+<SCRIPT id="toolbar-tpl-scriptId" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript" skin="black" prod="blog" fixed="true"></SCRIPT>
+      <!--new top-->     
+<DIV id="container">
+<DIV id="header">
+<DIV class="header">
+<DIV id="blog_title">
+<H2><A href="http://blog.csdn.net/augusdi">Augusdi的专栏</A></H2>
+<H3>攀登技术的高峰，我与大家共勉！</H3>
+<DIV class="clear"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="navigator">
+<DIV class="navigator_bg"></DIV>
+<DIV class="navigator">
+<UL>
+  <LI id="btnContents"><A 
+  href="http://blog.csdn.net/augusdi?viewmode=contents"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A></LI> 
+                  
+  <LI id="btnView"><A href="http://blog.csdn.net/augusdi?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A></LI> 
+                  
+  <LI id="btnRss"><A href="http://blog.csdn.net/augusdi/rss/list"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A></LI> 
+                                         </UL></DIV></DIV>
+<SCRIPT type="text/javascript">
+    var username = "Augusdi";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/augusdi";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+         
+<DIV id="body">
+<DIV id="main">
+<DIV class="main">
+<DIV class="ad_class">
+<DIV class="notice tracking-ad" data-mod="popu_3"><A href="http://blog.csdn.net/blogdevteam/article/details/68974450"><FONT 
+color="blue">CSDN日报20170403 ——《该不该离职？它说了算！》</FONT></A> &nbsp;&nbsp;&nbsp;&nbsp;
+<A 
+href="http://edu.csdn.net/huiyiCourse/series_detail/30?ref=blog&amp;loc=r1"><FONT 
+color="red">程序员你的职场该这么规划！ </FONT></A> &nbsp;&nbsp;&nbsp;&nbsp;<A href="http://edu.csdn.net/huiyiCourse/series_detail/27?ref=blog&amp;loc=r1"><FONT 
+color="blue">Python数据分析与机器学习 </FONT></A> &nbsp;&nbsp;&nbsp;&nbsp;<A href="http://blog.csdn.net/blogdevteam/article/details/60961185"><FONT 
+color="red">博客搬家，有礼相送 </FONT></A> </DIV></DIV><LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css" 
+rel="stylesheet" type="text/css"> <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css" 
+rel="stylesheet" type="text/css"> 
+<SCRIPT language="JavaScript" src="http://download.csdn.net/js/jquery.cookie.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://c.csdnimg.cn/rabbit/search-service/main.js" type="text/javascript"></SCRIPT>
+ <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css" 
+rel="stylesheet"> <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css" 
+rel="stylesheet"> 
+<SCRIPT src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://static.blog.csdn.net/scripts/web-storage-cache.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://static.blog.csdn.net/scripts/replace.min.js" type="text/javascript"></SCRIPT>
+ <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.css" 
+rel="stylesheet"> 
+<SCRIPT src="http://static.blog.csdn.net/code/prettify.js" type="text/javascript"></SCRIPT>
+   
+<SCRIPT type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+      
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=%e8%92%99%e7%89%b9%e5%8d%a1%e6%b4%9b%e6%b3%95%e6%b1%82Pi&u=http://blog.csdn.net/augusdi/article/details/12438159"
+
+    </SCRIPT>
+ 
+<DIV class="details" id="article_details">
+<DIV class="article_title"><SPAN class="ico ico_type_Repost"></SPAN>     
+<H1><SPAN class="link_title"><A href="http://blog.csdn.net/augusdi/article/details/12438159">蒙特卡洛法求Pi 
+                    </A></SPAN>     </H1> </DIV>
+<DIV class="article_manage clearfix">
+<DIV class="article_r"><SPAN class="link_postdate">2013-10-08 16:05</SPAN>       
+      <SPAN title="阅读次数" class="link_view">2010人阅读</SPAN>             <SPAN 
+title="评论次数" class="link_comments"><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#comments">评论</A>(0)</SPAN> 
+            <SPAN class="link_collect tracking-ad" data-mod="popu_171"><A title="收藏" 
+onclick="javascript:collectArticle('%e8%92%99%e7%89%b9%e5%8d%a1%e6%b4%9b%e6%b3%95%e6%b1%82Pi','12438159');return false;" 
+href="javascript:void(0);">收藏</A></SPAN>              <SPAN 
+class="link_report"><A title="举报" onclick="javascript:report(12438159,2);return false;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#report">举报</A></SPAN> 
+        </DIV></DIV>
+<DIV class="embody" id="embody" style="display: none;"><SPAN 
+class="embody_t">本文章已收录于：</SPAN>         
+<DIV class="embody_c" id="lib" 
+value='{"err":0,"msg":"ok","data":[]}'></DIV></DIV>
+<STYLE type="text/css">.embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </STYLE>
+     
+<SCRIPT type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </SCRIPT>
+       
+<DIV class="category clearfix">
+<DIV class="category_l"><IMG src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+            <SPAN>分类：</SPAN>         </DIV>
+<DIV class="category_r"><LABEL onclick="GetCategoryArticles('716845','Augusdi','top','12438159');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">DSP数字信号处理<EM>（102）</EM></SPAN> 
+                      <IMG class="arrow-down" style="display: inline;" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+                      <IMG class="arrow-up" style="display: none;" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+                        
+<DIV class="subItem">
+<DIV class="subItem_t"><A href="http://blog.csdn.net/Augusdi/article/category/716845" 
+target="_blank">作者同类文章</A><I class="J_close">X</I></DIV>
+<UL class="subItem_l" id="top_716845"></UL></DIV></LABEL>                        
+    </DIV></DIV>
+<SCRIPT src="http://static.blog.csdn.net/scripts/category.js" type="text/javascript"></SCRIPT>
+             
+<DIV class="article_content" id="article_content">
+<P style="text-align: left;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><SPAN style="line-height: 18px; white-space: pre;"><SPAN style="font-family: comic sans ms, sans-serif;"><SPAN>编程实现如下模拟：</SPAN></SPAN></SPAN></SPAN></P>
+<P style="text-align: left;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><SPAN style="line-height: 18px; white-space: pre;"><SPAN style="font-family: comic sans ms, sans-serif;"><SPAN>飞镖被随机地投掷到以（1，1）和（-1，-1）为对角的正方形内。若飞镖落在单位圆内【即以（0，0）为圆心，1为半径的圆】，算命中。否则未命中。</SPAN></SPAN></SPAN></SPAN></P>
+<P style="text-align: left;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><SPAN style="line-height: 18px; white-space: pre;"><SPAN style="font-family: comic sans ms, sans-serif;"><SPAN>运行这个模拟并用它求PI的近似值。</SPAN></SPAN></SPAN></SPAN></P>
+<P style="text-align: left;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"></SPAN>&nbsp;</P>
+<P style="text-align: left;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><SPAN style="line-height: 18px; white-space: pre;"><SPAN style="font-family: comic sans ms, sans-serif;"><SPAN>模型如下图所示：</SPAN></SPAN></SPAN></SPAN></P>
+<P style="text-align: center;"><SPAN style="font: 12px/normal simsun; text-align: center; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; border-collapse: separate; orphans: 2; widows: 2; font-size-adjust: none; font-stretch: normal; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;"><SPAN style="line-height: 18px; white-space: pre;"><SPAN style="font-family: comic sans ms, sans-serif;"><IMG alt="" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/0_13033731360k8X.gif"></SPAN></SPAN></SPAN></P>
+<P>&nbsp;</P>
+<PRE class="cpp" name="code">// Circle_PI.cpp : 定义控制台应用程序的入口点。
+//
+
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+const int MAX_DAST=100000;		//投掷总数
+
+double rand_double(double a,double b);
+
+void rand_seed();				//设置随机数的种子
+
+int main(void)
+{
+
+	int PI_DAST=0;	//投掷在圆里面的总数
+
+	rand_seed();
+
+	for(int i=0;i&lt;MAX_DAST;i++)
+	{
+		double x=rand_double(-1,1);
+		double y=rand_double(-1,1);
+		if( x*x+y*y&lt;=1)
+			PI_DAST++;
+	}
+
+	double PI=PI_DAST*4.0/MAX_DAST;
+
+	cout&lt;&lt;fixed;
+
+	cout&lt;&lt;"PI="&lt;&lt;PI&lt;&lt;endl;
+
+	system("pause");
+
+	return 0;
+}
+
+/**
+	生成某一区域内的随机浮点数
+	@param a 该区域的下边界
+	@param b 该区域的上边界
+	@param return 随机浮点数x，x∈[a，b]
+*/
+double rand_double(double a,double b)
+{
+	return a+(b-a)*rand()*1.0/RAND_MAX;
+	/*
+	RAND_MAX是VC中stdlib.h中宏定义的一个字符常量： 　
+	#define RAND_MAX 0x7FFF 　
+	其值最小为32767,最大为2147483647 　　
+	通常在产生随机小数时可以使用RAND_MAX。
+	*/
+}
+
+/**
+	设置随机数生成器的种子
+*/
+void rand_seed()
+{
+	int seed=static_cast&lt;int&gt;(time(0));				//返回的是系统的时间
+	srand(seed);
+	/*
+	rand()产生伪随机数。srand函数提供种子，种子不同产生的随机数序列也不同，所以通常先调用srand函数，将time(0)的结果设置成种子。
+	srand函数是随机数发生器的初始化函数。
+	*/
+}</PRE>
+<P><A href="http://blog.csdn.net/smsmn/article/details/6338925" 
+target="_blank">http://blog.csdn.net/smsmn/article/details/6338925</A><BR></P></DIV><!-- Baidu Button BEGIN --> 
+<DIV class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172"><A 
+class="bds_more" style='background-position: 0px 0px !important; background-image: url("http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png") !important;' 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="more"></A> <A title="分享到QQ空间" class="bds_qzone" style="background-position: 0px -52px !important;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="qzone"></A> <A title="分享到新浪微博" class="bds_tsina" style="background-position: 0px -104px !important;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="tsina"></A> <A title="分享到腾讯微博" class="bds_tqq" style="background-position: 0px -260px !important;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="tqq"></A> <A title="分享到人人网" class="bds_renren" style="background-position: 0px -208px !important;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="renren"></A> <A title="分享到微信" class="bds_weixin" style="background-position: 0px -1612px !important;" 
+href="http://blog.csdn.net/augusdi/article/details/12438159#" 
+data-cmd="weixin"></A> </DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+ <!-- Baidu Button END -->    <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css" 
+rel="stylesheet">     <!--172.16.140.15--> <!-- Baidu Button BEGIN --> 
+<SCRIPT id="bdshare_js" type="text/javascript" data="type=tools&amp;uid=1536434"></SCRIPT>
+ 
+<SCRIPT id="bdshell_js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+ <!-- Baidu Button END --> 
+<SCRIPT type="text/javascript">
+    var fromjs = $("#fromjs");
+    if (fromjs.length > 0) {
+            $("#fromjs .markdown_views pre").addClass("prettyprint");
+            prettyPrint();
+
+            $('pre.prettyprint code').each(function () {
+                var lines = $(this).text().split('\n').length;
+                var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                $(this).addClass('has-numbering').parent().append($numbering);
+                for (i = 1; i <= lines; i++) {
+                    $numbering.append($('<li/>').text(i));
+                };
+                $numbering.fadeIn(1700);
+            });
+
+            $('.pre-numbering li').css("color", "#999");
+        }
+
+    
+
+</SCRIPT>
+          
+<DIV id="digg" articleid="12438159">
+<DL class="digg digg_disable" id="btnDigg" onclick="btndigga();">
+  <DT>顶</DT>
+  <DD>0</DD></DL>
+<DL class="digg digg_disable" id="btnBury" onclick="btnburya();">
+  <DT>踩</DT>
+  <DD>0</DD></DL></DIV>
+<DIV class="tracking-ad" data-mod="popu_222"><A 
+href="javascript:void(0);">&nbsp;</A>   </DIV>
+<DIV class="tracking-ad" data-mod="popu_223"><A 
+href="javascript:void(0);">&nbsp;</A></DIV>
+<SCRIPT type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </SCRIPT>
+    
+<UL class="article_next_prev">
+  <LI class="prev_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/augusdi/article/details/12438011';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/augusdi/article/details/12438011">卷积与傅里叶变换</A></LI>
+  <LI class="next_article"><SPAN onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/augusdi/article/details/12438247';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/augusdi/article/details/12438247">卷积的意义</A></LI></UL>
+<DIV style="height: 10px; clear: both;"></DIV>
+<DIV class="similar_article" style="display: none;">
+<H4>我的同类文章</H4>
+<DIV class="similar_c" style="margin: 20px 0px 0px;">
+<DIV class="similar_c_t"><LABEL class="similar_cur"><SPAN style="cursor: pointer;" 
+onclick="GetCategoryArticles('716845','Augusdi','foot','12438159');">DSP数字信号处理<EM>（102）</EM></SPAN> 
+                                </LABEL>                     </DIV>
+<DIV class="similar_wrap tracking-ad" style="max-height: 195px;" data-mod="popu_141"><A 
+style="display: none;" href="http://blog.csdn.net/">http://blog.csdn.net/</A>    
+                     
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type="text/javascript">
+        $(function () {
+            GetCategoryArticles('716845', 'Augusdi','foot','12438159');
+        });
+    </SCRIPT>
+       </DIV>
+<DIV>
+<SCRIPT type="text/javascript">
+                /*博客内容页下方Banner1-728*90，创建于2016-12-13*/
+                var cpro_id = "u2843949";
+            </SCRIPT>
+             
+<SCRIPT src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></SCRIPT>
+      </DIV>
+<DIV id="suggest"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+             $(function(){
+                 $.get("/Augusdi/svc/GetSuggestContent/12438159",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+  
+<STYLE>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</STYLE>
+  <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.css" 
+rel="stylesheet"> 
+<DIV class="tracking-ad" id="relate" data-mod="popu_218">
+<DIV class="relate_t">
+<H3><SPAN>参考知识库</SPAN></H3></DIV>
+<DIV class="relate_c"></DIV></DIV>
+<DL class="blog-ass-articl" id="res-relatived">
+  <DIV class="embody embody_b" id="libkeyparent" style="display: none;"><SPAN 
+  class="embody_t">更多资料请参考：</SPAN>             
+  <DIV class="embody_c" id="libkey"></DIV></DIV>
+  <DT><SPAN>猜你在找</SPAN></DT>
+  <DIV id="adCollege" style="width: 42%; float: left;">
+<SCRIPT src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></SCRIPT>
+           
+<SCRIPT type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "12438159",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+            
+            setEduLoc();
+
+            function setEduLoc() {               
+                var edus = $("#adCollege div dd a");
+                if (edus.length == 0) {
+                    setTimeout(function () {
+                        setEduLoc();
+                    }, 500);
+                }
+                else {
+                    var eduLoc = "?ref=blog&loc=0";
+                    $.each(edus, function (index,item) {
+                        var href = $(this).attr("href") + eduLoc;
+                        $(this).attr("href", href);
+                    });
+                }
+            }
+
+        </SCRIPT>
+       </DIV>
+  <DIV class="tracking-ad" id="res" style="width: 42%; margin-right: 30px; float: left;" 
+  data-mod="popu_36"></DIV></DL>
+<SCRIPT type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = '蒙特卡洛法求Pi' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+      
+<DIV id="ad_cen">
+<SCRIPT type="text/javascript">
+                        /*博客内容页下方Banner-728*90，创建于2014-7-3*/
+                        var cpro_id = "u1607657";
+                    </SCRIPT>
+                     
+<SCRIPT src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></SCRIPT>
+     </DIV>
+<DIV class="comment_class">
+<DIV class="panel_head" id="comment_title"><SPAN 
+class="see_comment">查看评论</SPAN><A name="comments"></A></DIV>
+<DIV id="comment_list"></DIV>
+<DIV id="comment_bar"></DIV>
+<DIV id="comment_form"></DIV>
+<DIV class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name="reply"></A><A 
+name="quote"></A></DIV></DIV>
+<SCRIPT type="text/javascript">
+    var fileName = '12438159';
+    var commentscount = 0;
+    var islock = false
+</SCRIPT>
+ 
+<SCRIPT src="http://static.blog.csdn.net/scripts/comment.js" type="text/javascript"></SCRIPT>
+     
+<DIV id="ad_bot"></DIV>
+<DIV id="report_dialog"></DIV>
+<DIV id="d-top" style="bottom: 60px;"><A title="快速回复" class="btn btn-top q-reply" 
+id="quick-reply" style="display: none;"><IMG alt="快速回复" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+        </A>        <A title="返回顶部" class="btn btn-top backtop" id="d-top-a" 
+style="display: none;" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])"><IMG 
+alt="TOP" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+    </A> </DIV>
+<SCRIPT type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+ 
+<STYLE type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</STYLE>
+ 
+<DIV class="tag_list" style="display: none;"></DIV>
+<SCRIPT language="javascript" type="text/javascript">     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/Augusdi/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+ 
+<DIV id="pop_win" style="background: 0px 0px rgb(255, 255, 255); border: 1px solid rgb(220, 220, 220); border-image: none; left: 630px; top: 222.5px; display: none; position: absolute; z-index: 10000; opacity: 1;"></DIV>
+<DIV id="popup_mask"></DIV>
+<STYLE>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</STYLE>
+ 
+<SCRIPT type="text/javascript">
+    $(function(){        
+        
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</SCRIPT>
+  
+<SCRIPT language="javascript" src="http://ads.csdn.net/js/async_new.js" type="text/javascript"></SCRIPT>
+                              
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="side">
+<DIV class="side">
+<DIV class="panel" id="panel_Profile">
+<UL class="panel_head"><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id="blog_userface"><A href="http://my.csdn.net/Augusdi" 
+  target="_blank"><IMG title="访问我的空间" style="max-width: 90%;" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_augusdi.jpg"> 
+      </A>     <BR><SPAN><A class="user_name" href="http://my.csdn.net/Augusdi" 
+  target="_blank">Augusdi</A></SPAN></DIV>
+  <DIV class="interact"><A title="[加关注]" class="attent" id="span_add_follow" 
+  href="javascript:void(0);"></A>  <A title="[发私信]" class="letter" onclick="window.open('http://msg.csdn.net/letters/model?receiver=Augusdi','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  href="javascript:void(0);"></A>  </DIV>
+  <DIV id="blog_medal">
+  <DIV title="CSDN认证专家" class="ico_expert" style='background: url("http://c.csdnimg.cn/jifen/images/xunzhang/xunzhang/bokezhuanjiamiddle.png") no-repeat; width: 60px; height: 60px; cursor: pointer;' 
+  onclick="javascript:location='http://blog.csdn.net/experts/rule.html'"></DIV>
+  <DIV id="bms_box"></DIV></DIV>
+  <UL id="blog_rank">
+    <LI>访问：<SPAN>8592049次</SPAN></LI>
+    <LI>积分：<SPAN>97007</SPAN> </LI>
+    <LI>等级： <SPAN 
+    style="display: inline-block; position: relative; z-index: 1;"><IMG id="leveImg" 
+    style="vertical-align: middle;" alt="" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog9.png"> 
+                
+    <DIV id="smallTittle" style="border: 2px solid rgb(221, 221, 221); border-image: none; left: -24px; top: 25px; width: 101px; height: 32px; text-align: center; line-height: 32px; display: none; position: absolute; z-index: 999; background-color: rgb(255, 255, 255);">
+    <DIV style="left: 42%; top: -8px; width: 0px; height: 0px; border-right-color: transparent; border-bottom-color: rgb(234, 234, 234); border-left-color: transparent; border-right-width: 10px; border-bottom-width: 8px; border-left-width: 10px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; position: absolute;"></DIV> 
+               积分：97007 </DIV></SPAN>  </LI>
+    <LI>排名：<SPAN>第8名</SPAN></LI></UL>
+  <UL id="blog_statistics">
+    <LI>原创：<SPAN>1132篇</SPAN></LI>
+    <LI>转载：<SPAN>2969篇</SPAN></LI>
+    <LI>译文：<SPAN>3篇</SPAN></LI>
+    <LI>评论：<SPAN>1370条</SPAN></LI></UL></UL></DIV>
+<DIV class="panel" id="panel_Search">
+<UL class="panel_head"><SPAN>文章搜索</SPAN></UL>
+<UL class="panel_body">
+  <FORM class="form_search" id="frmSearch" action="http://so.csdn.net/search" 
+  target="_blank"><SPAN><INPUT title="请输入关键字" class="blogsearch" id="inputSearch" type="text"></SPAN> 
+          <INPUT title="search in blog" id="btnSubmit" type="button" value="搜索"> 
+          <INPUT name="q" id="inputQ" type="hidden">         
+<INPUT name="t" type="hidden" value="blog">         <A id="btnSearchBlog" 
+  target="_blank"></A>         </FORM></UL></DIV>
+<SCRIPT type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV class="panel" id="panel_Category"> 
+<UL class="panel_head"><SPAN>文章分类</SPAN></UL>
+<UL class="panel_body">
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/704352">Office编程</A><SPAN>(137)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/765212">VS2010</A><SPAN>(33)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/519968">VC++程序设计</A><SPAN>(665)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/703484">Command集锦</A><SPAN>(8)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/519969">Windows驱动设计</A><SPAN>(72)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1400202">Windows 
+  Touch</A><SPAN>(55)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1525167">DirectCompute</A><SPAN>(4)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/519967">Windows软件设计</A><SPAN>(140)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1611161">Windows 
+  Timer</A><SPAN>(20)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1443139">Direct2D</A><SPAN>(65)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1218625">ActiveX</A><SPAN>(7)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1422779">XTP-ToolkitPro</A><SPAN>(1)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/880852">CAD-CAM</A><SPAN>(17)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/746694">BOOST</A><SPAN>(28)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/746695">CGAL</A><SPAN>(8)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/700501">Database</A><SPAN>(142)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/881575">doxygen</A><SPAN>(6)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/704820">Install 
+  Setup</A><SPAN>(51)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/716845">DSP数字信号处理</A><SPAN>(103)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/703482">InterNet</A><SPAN>(24)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1078964">Linux</A><SPAN>(113)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/944647">Matlab</A><SPAN>(13)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/747412">OpenCV</A><SPAN>(222)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/685679">OpenGL</A><SPAN>(282)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/715733">Open 
+  Inventor</A><SPAN>(166)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/695059">OpenCascade</A><SPAN>(13)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/773668">PCI</A><SPAN>(36)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1406539">OSG</A><SPAN>(4)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1407713">OGRE</A><SPAN>(11)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/747747">QT</A><SPAN>(22)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/719794">STL标准模板库</A><SPAN>(44)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/722052">VTK</A><SPAN>(5)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/544065">USB设计</A><SPAN>(42)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/878080">SVN-GIT-P4</A><SPAN>(88)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/686039">C++ 
+  AMP</A><SPAN>(75)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/703977">Debug</A><SPAN>(23)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/880191">移动设备开发</A><SPAN>(62)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/519966">娱乐小记</A><SPAN>(93)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1406571">CxImage</A><SPAN>(44)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/686035">图像处理</A><SPAN>(47)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/527033">小常识</A><SPAN>(138)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/519971">硬件设计</A><SPAN>(209)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1663451">CUDA</A><SPAN>(107)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1687179">OpenCL</A><SPAN>(10)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1394219">OpenMP</A><SPAN>(55)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1068295">易</A><SPAN>(8)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1191656">SCADA</A><SPAN>(13)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1394355">PCL-Point Cloud 
+  Library</A><SPAN>(5)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1393637">GSL-GNU 
+  scientific Library</A><SPAN>(95)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1384524">VC操作硬件</A><SPAN>(6)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1406538">ZLib</A><SPAN>(1)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1406572">MPI</A><SPAN>(3)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1408233">Ribbon</A><SPAN>(3)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1407316">PC 
+  Hardware</A><SPAN>(15)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1433354">Logging 
+  File</A><SPAN>(43)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1434219">Video</A><SPAN>(4)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1436393">GIS</A><SPAN>(1)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1436380">ML-机器学习</A><SPAN>(7)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1543345">ChartDirector</A><SPAN>(1)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1549255">dsPCI33</A><SPAN>(34)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1583621">SerialPort</A><SPAN>(22)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1593897">TIFF</A><SPAN>(12)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1675423">Audio</A><SPAN>(42)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2264819">BlueTooth</A><SPAN>(66)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1692265">Fitting</A><SPAN>(0)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/1692267">Numeric 
+  RECIPE</A><SPAN>(6)</SPAN>                 </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2366103">八叉树-Octree</A><SPAN>(20)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2574303">Tcl/Tk</A><SPAN>(40)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2574537">GCC_G++_GDB_DDD</A><SPAN>(14)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2575289">Shell</A><SPAN>(72)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2602911">Grep</A><SPAN>(2)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2602913">AWK</A><SPAN>(17)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2602915">SED</A><SPAN>(7)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2603005">gvim</A><SPAN>(79)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/2701819">kernal</A><SPAN>(5)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/3079273">LSF</A><SPAN>(4)</SPAN> 
+                  </LI>
+  <LI><A onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/Augusdi/article/category/6795377">Lex_Yacc</A><SPAN>(5)</SPAN> 
+                  </LI></UL></DIV>
+<DIV class="panel" id="panel_Archive">
+<UL class="panel_head"><SPAN>文章存档</SPAN></UL>
+<UL class="panel_body">
+  <DIV id="archive_list"><!--归档统计--> 
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2017/03">2017年03月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2017/02">2017年02月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2017/01">2017年01月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2016/10">2016年10月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2016/08">2016年08月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/12">2015年12月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/10">2015年10月</A><SPAN>(13)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/08">2015年08月</A><SPAN>(13)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/06">2015年06月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/05">2015年05月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/04">2015年04月</A><SPAN>(62)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/03">2015年03月</A><SPAN>(16)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/02">2015年02月</A><SPAN>(8)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2015/01">2015年01月</A><SPAN>(23)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/12">2014年12月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/11">2014年11月</A><SPAN>(37)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/10">2014年10月</A><SPAN>(73)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/09">2014年09月</A><SPAN>(34)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/08">2014年08月</A><SPAN>(31)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/07">2014年07月</A><SPAN>(120)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/06">2014年06月</A><SPAN>(128)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/05">2014年05月</A><SPAN>(183)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/04">2014年04月</A><SPAN>(23)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/03">2014年03月</A><SPAN>(69)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/02">2014年02月</A><SPAN>(75)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2014/01">2014年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/12">2013年12月</A><SPAN>(171)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/11">2013年11月</A><SPAN>(33)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/10">2013年10月</A><SPAN>(148)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/09">2013年09月</A><SPAN>(168)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/08">2013年08月</A><SPAN>(145)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/07">2013年07月</A><SPAN>(27)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/06">2013年06月</A><SPAN>(144)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/05">2013年05月</A><SPAN>(139)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/04">2013年04月</A><SPAN>(208)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/03">2013年03月</A><SPAN>(61)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/02">2013年02月</A><SPAN>(59)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2013/01">2013年01月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/12">2012年12月</A><SPAN>(10)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/11">2012年11月</A><SPAN>(32)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/10">2012年10月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/09">2012年09月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/08">2012年08月</A><SPAN>(34)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/07">2012年07月</A><SPAN>(24)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/06">2012年06月</A><SPAN>(9)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/05">2012年05月</A><SPAN>(39)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/04">2012年04月</A><SPAN>(25)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/03">2012年03月</A><SPAN>(32)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/02">2012年02月</A><SPAN>(46)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2012/01">2012年01月</A><SPAN>(20)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/12">2011年12月</A><SPAN>(44)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/11">2011年11月</A><SPAN>(8)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/10">2011年10月</A><SPAN>(21)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/09">2011年09月</A><SPAN>(43)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/08">2011年08月</A><SPAN>(49)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/07">2011年07月</A><SPAN>(100)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/06">2011年06月</A><SPAN>(113)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/05">2011年05月</A><SPAN>(136)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/04">2011年04月</A><SPAN>(35)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/03">2011年03月</A><SPAN>(55)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/02">2011年02月</A><SPAN>(15)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2011/01">2011年01月</A><SPAN>(29)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/12">2010年12月</A><SPAN>(41)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/11">2010年11月</A><SPAN>(15)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/10">2010年10月</A><SPAN>(50)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/09">2010年09月</A><SPAN>(17)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/08">2010年08月</A><SPAN>(20)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/07">2010年07月</A><SPAN>(182)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/06">2010年06月</A><SPAN>(206)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/05">2010年05月</A><SPAN>(43)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/04">2010年04月</A><SPAN>(27)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/03">2010年03月</A><SPAN>(19)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2010/01">2010年01月</A><SPAN>(17)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/12">2009年12月</A><SPAN>(13)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/11">2009年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/10">2009年10月</A><SPAN>(40)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/09">2009年09月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/08">2009年08月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/07">2009年07月</A><SPAN>(4)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/06">2009年06月</A><SPAN>(21)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/05">2009年05月</A><SPAN>(71)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/04">2009年04月</A><SPAN>(73)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/03">2009年03月</A><SPAN>(19)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2009/01">2009年01月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2008/12">2008年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2008/11">2008年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2008/01">2008年01月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2007/11">2007年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2007/10">2007年10月</A><SPAN>(6)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/Augusdi/article/month/2007/09">2007年09月</A><SPAN>(3)</SPAN></LI></DIV></UL></DIV>
+<DIV class="panel" id="hotarticls">
+<UL class="panel_head"><SPAN>阅读排行    </SPAN> </UL>
+<UL class="panel_body itemlist">
+  <LI><A title="CUDA从入门到精通" href="http://blog.csdn.net/augusdi/article/details/12833235">CUDA从入门到精通</A><SPAN>(67893)</SPAN> 
+  </LI>
+  <LI><A title="OpenCV 获取摄像头并显示摄像头视频" href="http://blog.csdn.net/augusdi/article/details/8762961">OpenCV 
+  获取摄像头并显示摄像头视频</A><SPAN>(61601)</SPAN> </LI>
+  <LI><A title="Eigen: C++开源矩阵计算工具——Eigen的简单用法" href="http://blog.csdn.net/augusdi/article/details/12907341">Eigen: 
+  C++开源矩阵计算工具——Eigen的简单用法</A><SPAN>(51851)</SPAN> </LI>
+  <LI><A title="用SQL语句向表格中插入数据" href="http://blog.csdn.net/augusdi/article/details/5694870">用SQL语句向表格中插入数据</A><SPAN>(47307)</SPAN> 
+  </LI>
+  <LI><A title="OpenCV函数cvFindContours" href="http://blog.csdn.net/augusdi/article/details/9000893">OpenCV函数cvFindContours</A><SPAN>(45545)</SPAN> 
+  </LI>
+  <LI><A title="IT人士必去的10个网站" href="http://blog.csdn.net/augusdi/article/details/5693575">IT人士必去的10个网站</A><SPAN>(44612)</SPAN> 
+  </LI>
+  <LI><A title="Deep Learning（深度学习）" href="http://blog.csdn.net/augusdi/article/details/20238157">Deep 
+  Learning（深度学习）</A><SPAN>(44461)</SPAN> </LI>
+  <LI><A title="图像处理常用边缘检测算子总结" href="http://blog.csdn.net/augusdi/article/details/9028331">图像处理常用边缘检测算子总结</A><SPAN>(37184)</SPAN> 
+  </LI>
+  <LI><A title="OpenCV图像处理形态学操作腐蚀Erode与膨胀Dilate" href="http://blog.csdn.net/augusdi/article/details/9014781">OpenCV图像处理形态学操作腐蚀Erode与膨胀Dilate</A><SPAN>(32232)</SPAN> 
+  </LI>
+  <LI><A title="OpenCv学习笔记（二）—cv::Mat学习" href="http://blog.csdn.net/augusdi/article/details/8876459">OpenCv学习笔记（二）—cv::Mat学习</A><SPAN>(31435)</SPAN> 
+  </LI></UL></DIV>
+<DIV class="panel" id="hotarticls2">
+<UL class="panel_head"><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="IT人士必去的10个网站" href="http://blog.csdn.net/augusdi/article/details/5693575">IT人士必去的10个网站</A><SPAN>(88)</SPAN> 
+  </LI>
+  <LI><A title="F28335  学习系列一——FLASH 搬移到 RAM 运行实现方法 " href="http://blog.csdn.net/augusdi/article/details/6555340">F28335 
+   学习系列一——FLASH 搬移到 RAM 运行实现方法 </A><SPAN>(34)</SPAN> </LI>
+  <LI><A title="太晚睡觉等于自杀" href="http://blog.csdn.net/augusdi/article/details/5440987">太晚睡觉等于自杀</A><SPAN>(29)</SPAN> 
+  </LI>
+  <LI><A title="注册表从入门到精通" href="http://blog.csdn.net/augusdi/article/details/4643981">注册表从入门到精通</A><SPAN>(23)</SPAN> 
+  </LI>
+  <LI><A title="千个常用DOS命令全面收藏" href="http://blog.csdn.net/augusdi/article/details/5693532">千个常用DOS命令全面收藏</A><SPAN>(22)</SPAN> 
+  </LI>
+  <LI><A title="OpenCV 获取摄像头并显示摄像头视频" href="http://blog.csdn.net/augusdi/article/details/8762961">OpenCV 
+  获取摄像头并显示摄像头视频</A><SPAN>(20)</SPAN> </LI>
+  <LI><A title="CUDA从入门到精通" href="http://blog.csdn.net/augusdi/article/details/12833235">CUDA从入门到精通</A><SPAN>(20)</SPAN> 
+  </LI>
+  <LI><A title="OpenCascade学习笔记-创建一个简单的OpenCascade单文档" href="http://blog.csdn.net/augusdi/article/details/5642368">OpenCascade学习笔记-创建一个简单的OpenCascade单文档</A><SPAN>(13)</SPAN> 
+  </LI>
+  <LI><A title="USB 3.0 开发要点" href="http://blog.csdn.net/augusdi/article/details/10005655">USB 
+  3.0 开发要点</A><SPAN>(12)</SPAN> </LI>
+  <LI><A title="保证你现在和未来不失业的十种关键技术" href="http://blog.csdn.net/augusdi/article/details/5694270">保证你现在和未来不失业的十种关键技术</A><SPAN>(12)</SPAN> 
+  </LI></UL></DIV>
+<DIV class="panel tracking-ad" id="homepageArticles" data-mod="popu_4">
+<UL class="panel_head"><SPAN>推荐文章</SPAN></UL>
+<UL class="panel_body" id="ad_commend">
+  <UL>
+    <LI><A href="http://blog.csdn.net/blogdevteam/article/details/68953399" 
+    target="_blank">* CSDN日报20170402 ——《我希望进入大学时就能知道的一些事儿》 </A></LI>
+    <LI><A href="http://blog.csdn.net/carson_ho/article/details/64904691" 
+    target="_blank">* 最全面总结 Android WebView与 JS 的交互方式</A></LI>
+    <LI><A href="http://blog.csdn.net/yueqian_scut/article/details/62229262" 
+    target="_blank">*  蓝牙DA14580开发：固件格式、二次引导和烧写</A></LI>
+    <LI><A href="http://blog.csdn.net/carson_ho/article/details/64904635" 
+    target="_blank">* 你不知道的 Android WebView 使用漏洞</A></LI></UL></UL></DIV>
+<DIV class="panel" id="newcomments">
+<UL class="panel_head"><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/9030537#comments">OpenCV特征提取</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/Andynnan">Andynnan</A>: 
+  求运行效果结果TAT     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/44247447#comments">将Vim改造为强大的IDE</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/Harold0823">Harold0823</A>: 
+  您好，请问在使用quickfix命令集，运行 "make" 的时候，提示“没有指明目标并且找不到ma...     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/4170089#comments">USB总线协议概述</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_38071298">qq_38071298</A>: 
+  你好，我现在在学习USB3.0开发，能不能发一分你的心得 学习学习。不胜感激！     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/9012019#comments">OpenCV图像内轮廓填-孔洞填充</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qinji0647">qinji0647</A>: 
+  很棒，调试成功，谢谢楼主     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/10005655#comments">USB 3.0 
+  开发要点</A>     
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_38071298">qq_38071298</A>: 
+  你好，我在做USB3.0的开发，小白一枚。望大神将你的心得发一份，学习学习。不胜感激！ 邮箱9756...     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/10005655#comments">USB 3.0 
+  开发要点</A>     
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/qq_38071298">qq_38071298</A>: 
+  你好，我在做USB3.0的开发，小白一枚。望大神将你的心得发一份，学习学习。不胜感激！ 邮箱9756...     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/9008921#comments">OpenCV计算连通区域数目与最大连通区域并标示出</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/liuyanlei1990">liuyanlei1990</A>:
+   int color = 254; // 不对0计数,不可能为255,所以254      这个数字是...     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/9014781#comments">OpenCV图像处理形态学操作腐蚀Erode与膨胀Dilate</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/danmanchi6810">danmanchi6810</A>: 
+  好     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/8876522#comments">OpenCv学习笔记（五）-数学形态学2（灰度级膨胀和腐蚀及c语言实现）</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/liu19930807">liu19930807</A>: 
+  博主辛苦了！     </P></LI>
+  <LI><A 
+  href="http://blog.csdn.net/augusdi/article/details/38614827#comments">CentOS下Qt安装</A> 
+      
+  <P style="margin: 0px;"><A class="user_name" href="http://blog.csdn.net/Arm_Linux_embeded">Arm_Linux_embeded</A>:
+   thanks     </P></LI></UL></DIV></DIV>
+<DIV class="clear"></DIV><!-- 广告位开始 -->                     <INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="190"></INS>                     <!-- 广告位结束 -->            
+</DIV>
+<DIV class="clear"></DIV></DIV>
+<SCRIPT src="http://c.csdnimg.cn/rabbit/cnick/cnick.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://static.blog.csdn.net/scripts/newblog.min.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=246586" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://static.blog.csdn.net/scripts/JavaScript1.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT src="http://passport.csdn.net/content/loginbox/login.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+ 
+<SCRIPT src="http://www.csdn.net/ui/scripts/Csdn/counter.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="http://ad.csdn.net/scripts/ad-blog.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+     </DIV><!--new top-->         
+<SCRIPT id="csdn-toolbar-id" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js" type="text/javascript" subcount="5" count="5" wrapid="note1" btnid="header_notice_num"></SCRIPT>
+      <!--new top-->        <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css" 
+rel="stylesheet" type="text/css">     
+<SCRIPT language="JavaScript" src="http://c.csdnimg.cn/comm_ask/js/libs/wmd.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT language="JavaScript" src="http://c.csdnimg.cn/comm_ask/js/libs/showdown.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT language="JavaScript" src="http://c.csdnimg.cn/comm_ask/js/libs/prettify.js" type="text/javascript"></SCRIPT>
+     
+<SCRIPT language="JavaScript" src="http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js" type="text/javascript"></SCRIPT>
+         
+<DIV id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+<SCRIPT id="adJs52b5334"></SCRIPT>
+                     
+<SCRIPT>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</SCRIPT>
+    </DIV><LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_code.css" 
+rel="stylesheet">     
+<SCRIPT src="http://static.blog.csdn.net/scripts/saveToCode.js" type="text/javascript"></SCRIPT>
+       
+<SCRIPT src="//csdnimg.cn/rabbit/tracking-ad/main.js?75eacd8" type="text/javascript"></SCRIPT>
+      <LINK href="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/fa.css" 
+rel="stylesheet">     
+<DIV class="pop_CA_cover" style="display: none;"></DIV>
+<DIV class="pop pop_CA" style="display: none;">
+<DIV class="CA_header">收藏助手             <SPAN class="cancel_icon" id="fapancle" 
+onclick="$('.pop_CA').hide();$('.pop_CA_cover').hide();"></SPAN></DIV><IFRAME 
+width="100%" height="360" id="fa" src="蒙特卡洛法求Pi%20-%20Augusdi的专栏%20-%20博客频道%20-%20CSDN_NET_files/o.htm" 
+frameborder="0" scrolling="no">&lt;/div&gt;&lt; /body&gt;&lt; /html&gt;     
+</IFRAME></DIV></BODY></HTML>

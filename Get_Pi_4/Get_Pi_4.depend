@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1491315673 source:c:\users\lenovo\desktop\content\get_pi\get_pi_4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1491279402 source:c:\users\lenovo\desktop\get_pi\get_pi_random_total_test\main.c
+	<stdio.h>
+	<stdlib.h>
+

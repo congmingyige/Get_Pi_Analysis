@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1491282601 source:c:\users\lenovo\desktop\get_pi\get_pi_graph\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

@@ -1,0 +1,12 @@
+.qqFace {
+	background: rgb(255, 255, 255); padding: 8px; border: 1px solid rgb(223, 230, 246); border-image: none;
+}
+.qqFace table td {
+	padding: 2px;
+}
+.qqFace table td img {
+	border: 1px solid rgb(255, 255, 255); border-image: none; cursor: pointer;
+}
+.qqFace table td img:hover {
+	border: 1px solid rgb(0, 102, 204); border-image: none;
+}

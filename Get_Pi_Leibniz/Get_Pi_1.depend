@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1489578205 source:e:\za\get_pi\get_pi_1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1489578217 source:c:\users\lenovo\desktop\get_pi\get_pi_1\main.c
+	<stdio.h>
+	<stdlib.h>
+

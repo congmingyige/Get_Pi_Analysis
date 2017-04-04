@@ -1,0 +1,87 @@
+.mod_zhuanjia_dianping {
+	color: rgb(101, 101, 101); font-size: 12px; margin-top: 80px; border-top-color: rgb(251, 245, 221); border-bottom-color: rgb(251, 245, 221); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid; background-color: rgb(255, 253, 245);
+}
+.mod_zhuanjia_dianping ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.mod_zhuanjia_dianping li {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.mod_zhuanjia_dianping img {
+	border: currentColor; border-image: none;
+}
+.mod_zhuanjia_dianping .dianping_title {
+	height: 40px; line-height: 40px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 2px; border-bottom-style: solid;
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_left {
+	font-size: 16px; border-bottom-color: rgb(203, 0, 0); border-bottom-width: 2px; border-bottom-style: solid; float: left;
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right {
+	color: rgb(101, 101, 101); font-size: 14px; font-weight: normal; float: right;
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right .red {
+	padding: 0px 5px; color: rgb(203, 0, 0);
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right img {
+	padding-right: 5px; vertical-align: -2px;
+}
+.mod_zhuanjia_dianping .dianping_content {
+	height: 240px; overflow: hidden; max-height: 800px;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list {
+	padding: 20px 0px; width: 100%; border-top-color: rgb(222, 220, 221); border-top-width: 1px; border-top-style: dashed; float: left;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list_left {
+	width: 40px; margin-top: 20px; margin-left: -100%; float: left;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list_left .name {
+	width: 40px; text-align: center; color: rgb(0, 0, 0); margin-top: 10px; display: inline-block;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right {
+	padding-left: 20px; margin-left: 40px;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time {
+	color: rgb(119, 149, 165);
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time .time_desc {
+	padding: 0px 5px;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .dianping_content_list_right_content {
+	line-height: 18px; margin-top: 10px;
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time img {
+	vertical-align: -2px;
+}
+.mod_zhuanjia_dianping .more {
+	width: 100%; text-align: center; position: relative;
+}
+.mod_zhuanjia_dianping .more img {
+	bottom: -20px; position: relative; cursor: pointer;
+}
+.mod_more_detail {
+	border: 1px solid rgb(232, 232, 232); border-image: none; color: rgb(51, 51, 51); font-size: 12px; margin-top: 50px;
+}
+.mod_more_detail ul {
+	list-style: none; margin: 0px; padding: 0px; height: 24px; line-height: 24px; overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.mod_more_detail li {
+	list-style: none; margin: 0px; padding: 0px; height: 24px; line-height: 24px; overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.mod_more_detail li a {
+	color: rgb(51, 51, 51);
+}
+.mod_more_detail .mod_more_detail_title {
+	height: 40px; line-height: 40px; text-indent: 10px; background-color: rgb(241, 241, 241);
+}
+.mod_more_detail .mod_more_detail_title .mod_more_detail_left {
+	color: rgb(0, 0, 0); font-size: 16px; float: left;
+}
+.mod_more_detail .mod_more_detail_content {
+	padding: 20px 0px; overflow: hidden;
+}
+.mod_more_detail .mod_more_detail_content .mod_more_detail_content_left {
+	padding: 0px 20px; width: 50%; border-right-color: rgb(232, 232, 232); border-right-width: 1px; border-right-style: solid; float: left; box-sizing: border-box;
+}
+.mod_more_detail .mod_more_detail_content .mod_more_detail_content_right {
+	padding: 0px 20px; width: 50%; float: left; box-sizing: border-box;
+}

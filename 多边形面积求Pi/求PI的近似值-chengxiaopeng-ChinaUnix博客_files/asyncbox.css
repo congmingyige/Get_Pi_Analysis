@@ -1,0 +1,375 @@
+html {
+	_background: url(*) fixed;
+}
+body {
+	margin: 0px; _height: 100%;
+}
+#asyncbox_cover {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: fixed; _position: absolute;
+}
+#asyncbox_focus {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: fixed; _position: absolute;
+}
+.asyncbox_max {
+	left: 0px; top: 0px; width: 100%; height: 100%; position: fixed; _position: absolute;
+}
+#asyncbox_cover {
+	overflow: hidden; display: none;
+}
+#asyncbox_focus {
+	overflow: hidden; display: none;
+}
+#asyncbox_clone {
+	overflow: hidden; display: none;
+}
+#asyncbox_cover div {
+	background: rgb(255, 255, 255); width: 100%; height: 100%; position: absolute; opacity: 0;
+}
+#asyncbox_cover iframe {
+	background: rgb(255, 255, 255); width: 100%; height: 100%; position: absolute; opacity: 0;
+}
+.asyncbox_select {
+	background: rgb(255, 255, 255); width: 100%; height: 100%; position: absolute; opacity: 0;
+}
+#asyncbox_focus {
+	background: rgb(255, 255, 255); width: 100%; height: 100%; position: absolute; opacity: 0;
+}
+.asyncbox_select {
+	z-index: -1;
+}
+#asyncbox_focus {
+	position: fixed; z-index: 3000; _position: absolute;
+}
+#asyncbox_clone {
+	border: 1px dashed rgb(0, 0, 102); border-image: none; position: absolute; z-index: 3000;
+}
+#asyncbox_load {
+	background: url("images/asyncbox_bg.gif");
+}
+#asyncbox_load div {
+	background: url("images/asyncbox_title_bottom.gif");
+}
+#asyncbox_load span {
+	background: url("images/asynctips_bg.gif");
+}
+.asyncbox_wait {
+	background: url("images/wait_bg.gif") no-repeat 100% 0px; padding: 4px; left: 4px; height: 14px; bottom: 4px; color: rgb(0, 51, 51); line-height: 15px; text-indent: 3px; overflow: hidden; position: absolute; opacity: 0.8; _text-indent: 0;
+}
+.asyncbox_wait span {
+	background: url("images/wait.gif") no-repeat; width: 16px; height: 16px; float: left;
+}
+.asyncbox_auto {
+	font: 12px/normal Tahoma, sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+.asyncbox_normal {
+	font: 12px/normal Tahoma, sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+.asyncbox_max {
+	font: 12px/normal Tahoma, sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+.asyncbox_auto table {
+	margin: 0px; padding: 0px;
+}
+.asyncbox_normal table {
+	margin: 0px; padding: 0px;
+}
+.asyncbox_max table {
+	margin: 0px; padding: 0px;
+}
+.asyncbox_auto ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.asyncbox_normal ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.asyncbox_max ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+.asyncbox_max {
+	position: fixed; _position: absolute;
+}
+.asyncbox_table {
+	width: 100%; height: 100%;
+}
+.asyncbox_auto .asyncbox_table {
+	width: auto; height: auto;
+}
+.b_t_l {
+	background: rgb(131, 158, 196);
+}
+.b_t_r {
+	background: rgb(131, 158, 196);
+}
+.b_tipsbar_l {
+	background: rgb(131, 158, 196);
+}
+.b_tipsbar_r {
+	background: rgb(131, 158, 196);
+}
+.b_m_l {
+	background: rgb(131, 158, 196);
+}
+.b_m_r {
+	background: rgb(131, 158, 196);
+}
+.b_btnsbar_l {
+	background: rgb(131, 158, 196);
+}
+.b_btnsbar_r {
+	background: rgb(131, 158, 196);
+}
+.b_b_l {
+	background: rgb(131, 158, 196);
+}
+.b_b_r {
+	background: rgb(131, 158, 196);
+}
+.b_t_m {
+	height: 25px; line-height: 25px;
+}
+.asyncbox_title li {
+	height: 25px; line-height: 25px;
+}
+.b_t_m {
+	background: rgb(131, 158, 196);
+}
+.b_b_m {
+	background: rgb(131, 158, 196);
+}
+.b_t_l {
+	background-position: -11px -41px; width: 4px;
+}
+.b_t_r {
+	background-position: -11px -41px; width: 4px;
+}
+.b_t_r {
+	background-position: -16px -41px;
+}
+.a_m_m {
+	background: rgb(244, 244, 244); vertical-align: top;
+}
+.b_m_m {
+	background: rgb(244, 244, 244); vertical-align: top;
+}
+.b_m_m {
+	background: rgb(255, 255, 255);
+}
+.b_m_l {
+	background-repeat: repeat-y;
+}
+.b_m_r {
+	background-repeat: repeat-y;
+}
+.b_tipsbar_l {
+	background-repeat: repeat-y;
+}
+.b_tipsbar_r {
+	background-repeat: repeat-y;
+}
+.b_btnsbar_l {
+	background-repeat: repeat-y;
+}
+.b_btnsbar_r {
+	background-repeat: repeat-y;
+}
+.b_m_r {
+	background-position: -5px 0px;
+}
+.b_tipsbar_r {
+	background-position: -5px 0px;
+}
+.b_btnsbar_r {
+	background-position: -5px 0px;
+}
+.b_b_l {
+	background-position: -11px -67px;
+}
+.b_b_m {
+	background-position: 0px -26px; height: 4px;
+}
+.b_b_r {
+	background-position: -16px -67px;
+}
+.b_tipsbar_m {
+	background: url("images/asyncbox_tipsbar_bg.gif") no-repeat 100% 100% rgb(234, 236, 233); height: 60px;
+}
+.b_tipsbar_layout {
+	background: url("images/asyncbox_tipsbar_icon.gif") no-repeat 15px 15px; padding: 10px 10px 10px 60px;
+}
+.b_tipsbar_title {
+	text-align: left; color: rgb(0, 0, 0);
+}
+.b_tipsbar_content {
+	text-align: left; color: rgb(119, 119, 119); line-height: 16px; text-indent: 2em;
+}
+.asyncbox_title li {
+	float: left;
+}
+.asyncbox_title_icon {
+	background: url("images/icon.gif") no-repeat 0px 7px; margin: 0px 2px; width: 14px;
+}
+.asyncbox_title_tips {
+	color: rgb(255, 255, 255); overflow: hidden; padding-right: 20px; cursor: default;
+}
+.asyncbox_close {
+	background: url("images/close.gif"); margin: 0px; padding: 0px; border: currentColor; border-image: none; top: 0px; width: 25px; height: 24px; right: 4px; line-height: 60px; overflow: hidden; position: absolute; cursor: default;
+}
+.asyncbox_close:hover {
+	background: url("images/close.gif"); cursor: pointer;
+}
+.asyncbox_alert {
+	margin: 12px; text-align: left; color: rgb(0, 51, 51); line-height: 18px; padding-left: 40px;
+}
+.asyncbox_confirm {
+	margin: 12px; text-align: left; color: rgb(0, 51, 51); line-height: 18px; padding-left: 40px;
+}
+.asyncbox_success {
+	margin: 12px; text-align: left; color: rgb(0, 51, 51); line-height: 18px; padding-left: 40px;
+}
+.asyncbox_warning {
+	margin: 12px; text-align: left; color: rgb(0, 51, 51); line-height: 18px; padding-left: 40px;
+}
+.asyncbox_error {
+	margin: 12px; text-align: left; color: rgb(0, 51, 51); line-height: 18px; padding-left: 40px;
+}
+.asyncbox_alert span {
+	background: url("images/asyncbox_bg.gif") no-repeat -58px -4px; left: 15px; top: 35px; width: 32px; height: 32px; position: absolute;
+}
+.asyncbox_confirm span {
+	background: url("images/asyncbox_bg.gif") no-repeat -58px -4px; left: 15px; top: 35px; width: 32px; height: 32px; position: absolute;
+}
+.asyncbox_success span {
+	background: url("images/asyncbox_bg.gif") no-repeat -58px -4px; left: 15px; top: 35px; width: 32px; height: 32px; position: absolute;
+}
+.asyncbox_warning span {
+	background: url("images/asyncbox_bg.gif") no-repeat -58px -4px; left: 15px; top: 35px; width: 32px; height: 32px; position: absolute;
+}
+.asyncbox_error span {
+	background: url("images/asyncbox_bg.gif") no-repeat -58px -4px; left: 15px; top: 35px; width: 32px; height: 32px; position: absolute;
+}
+.asyncbox_confirm span {
+	background-position: -90px -4px;
+}
+.asyncbox_success span {
+	background-position: -122px -4px;
+}
+.asyncbox_warning span {
+	background-position: -154px -4px;
+}
+.asyncbox_error span {
+	background-position: -186px -4px;
+}
+.asyncbox_error {
+	color: rgb(255, 0, 0);
+}
+.asyncbox_prompt {
+	padding: 0px 10px; color: rgb(0, 51, 51);
+}
+.asyncbox_prompt li {
+	margin-top: 8px;
+}
+.asyncbox_prompt input {
+	font: 12px/1.3em Verdana, sans-serif; margin: 0px; padding: 3px; border: 1px solid rgb(90, 126, 173); border-image: none; color: rgb(102, 102, 102); font-size-adjust: none; font-stretch: normal; resize: none;
+}
+.asyncbox_prompt textarea {
+	font: 12px/1.3em Verdana, sans-serif; margin: 0px; padding: 3px; border: 1px solid rgb(90, 126, 173); border-image: none; color: rgb(102, 102, 102); font-size-adjust: none; font-stretch: normal; resize: none;
+}
+.asyncbox_prompt input {
+	height: 15px;
+}
+.a_btnsbar_m {
+	background: rgb(244, 244, 244); height: 40px;
+}
+.b_btnsbar_m {
+	background: rgb(244, 244, 244); height: 40px;
+}
+.b_btnsbar_m {
+	height: 38px; border-top-color: rgb(255, 204, 204); border-top-width: 1px; border-top-style: solid;
+}
+.a_btnsbar_m .asyncbox_btn_layout {
+	text-align: right; padding-right: 10px;
+}
+.b_btnsbar_m .asyncbox_btn_layout {
+	text-align: right; padding-right: 8px;
+}
+.asyncbox_btn {
+	background: url("images/asyncbox_bg.gif") no-repeat -21px -40px; margin: 0px 0px 0px 10px; padding: 0px; border: currentColor; border-image: none; height: 22px; text-decoration: none; display: inline-block; cursor: default;
+}
+.asyncbox_btn span {
+	background: url("images/asyncbox_bg.gif") no-repeat 100% -40px; padding: 3px 11px 3px 0px; height: 16px; color: rgb(68, 68, 68); margin-left: 12px; float: left;
+}
+.asyncbox_btn:hover {
+	background-position: -21px -62px; text-decoration: none;
+}
+.asyncbox_btn:hover span {
+	background-position: 100% -62px;
+}
+.asynctips {
+	left: 0px; top: 0px; height: 38px; overflow: hidden; position: absolute; z-index: 3000;
+}
+.asynctips table {
+	margin: 0px; padding: 0px;
+}
+.asynctips_left {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_middle {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_right {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_alert {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_success {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_error {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_wait {
+	background: url("images/asynctips_bg.gif") no-repeat; height: 38px;
+}
+.asynctips_left {
+	background-position: 0px -26px; width: 5px;
+}
+.asynctips_middle {
+	background-position: 0px -64px; font: bold 14px/normal Tahoma, sans-serif; padding: 0px 4px; color: rgb(85, 85, 85); font-size-adjust: none; font-stretch: normal; background-repeat: repeat-x;
+}
+.asynctips_right {
+	background-position: -73px -26px; width: 5px;
+}
+.asynctips_alert {
+	background-position: 0px -64px; width: 26px; background-repeat: repeat-x;
+}
+.asynctips_success {
+	background-position: 0px -64px; width: 26px; background-repeat: repeat-x;
+}
+.asynctips_error {
+	background-position: 0px -64px; width: 26px; background-repeat: repeat-x;
+}
+.asynctips_wait {
+	background-position: 0px -64px; width: 26px; background-repeat: repeat-x;
+}
+.asynctips_alert span {
+	background: url("images/asynctips_bg.gif") no-repeat; width: 26px; height: 26px; display: block;
+}
+.asynctips_success span {
+	background: url("images/asynctips_bg.gif") no-repeat; width: 26px; height: 26px; display: block;
+}
+.asynctips_error span {
+	background: url("images/asynctips_bg.gif") no-repeat; width: 26px; height: 26px; display: block;
+}
+.asynctips_wait span {
+	background: url("images/asynctips_bg.gif") no-repeat; width: 26px; height: 26px; display: block;
+}
+.asynctips_success span {
+	background-position: -26px 0px;
+}
+.asynctips_error span {
+	background-position: -52px 0px;
+}
+.asynctips_wait span {
+	background: url("images/wait.gif") no-repeat 6px;
+}

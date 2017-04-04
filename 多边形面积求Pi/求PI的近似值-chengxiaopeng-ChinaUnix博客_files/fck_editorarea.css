@@ -1,0 +1,219 @@
+* {
+	-ms-word-wrap: break-word;
+}
+p {
+	padding: 0px;
+}
+.Bold {
+	font-weight: bold;
+}
+.Title {
+	color: rgb(204, 51, 0); font-size: 18px; font-weight: bold;
+}
+.codeHead {
+	background: rgb(255, 255, 255); padding: 5px 5px 5px 15px; font-size: 12px; font-weight: bold; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.code {
+	background: rgb(255, 255, 255); font: 12px/normal "Consolas", Monospace; margin: 0px 0px 1.1em; padding: 0px; border: 1px solid rgb(221, 221, 221); border-image: none; width: 98%; letter-spacing: 0.1px; overflow: auto; -ms-word-break: break-all; font-size-adjust: none; font-stretch: normal;
+}
+.codeheads {
+	background: 0px 0px rgb(242, 242, 242); padding: 0px; width: 98%; height: 25px; line-height: 25px; font-size: 12px; font-weight: bold; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.codeheads p {
+	padding-left: 30px;
+}
+.codeText {
+	background: rgb(255, 255, 255); font: 12px/normal "Consolas", Monospace; margin: 0px 0px 1.1em; padding: 0px; border: 1px solid rgb(221, 221, 221); border-image: none; width: 98%; letter-spacing: 0.1px; overflow: auto; -ms-word-break: break-all; font-size-adjust: none; font-stretch: normal;
+}
+.codeText ol {
+	background: rgb(255, 255, 255); margin: 0px 1px; color: rgb(92, 92, 92); line-height: 1.3;
+}
+.codeText ol li {
+	background: rgb(255, 255, 255); padding-left: 10px;
+}
+.codeText ol li.alt {
+	background: rgb(255, 255, 255);
+}
+.codeText ol li span {
+	color: rgb(0, 0, 0);
+}
+.codeText .comment {
+	color: rgb(0, 130, 0);
+}
+.codeText .comments {
+	color: rgb(0, 130, 0);
+}
+.codeText .string {
+	color: blue;
+}
+.codeText .keyword {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+.codeText .preprocessor {
+	color: gray;
+}
+.dp-c .comment {
+	color: green;
+}
+.dp-c .string {
+	color: blue;
+}
+.dp-c .preprocessor {
+	color: gray;
+}
+.dp-c .keyword {
+	color: blue;
+}
+.dp-c .vars {
+	color: rgb(221, 0, 0);
+}
+.dp-vb .comment {
+	color: green;
+}
+.dp-vb .string {
+	color: blue;
+}
+.dp-vb .preprocessor {
+	color: gray;
+}
+.dp-vb .keyword {
+	color: blue;
+}
+.dp-sql .comment {
+	color: green;
+}
+.dp-sql .string {
+	color: red;
+}
+.dp-sql .keyword {
+	color: rgb(127, 0, 85);
+}
+.dp-sql .func {
+	color: rgb(255, 20, 147);
+}
+.dp-sql .op {
+	color: blue;
+}
+.dp-xml .cdata {
+	color: rgb(255, 20, 147);
+}
+.dp-xml .comments {
+	color: green;
+}
+.dp-xml .tag {
+	color: blue; font-weight: bold;
+}
+.dp-xml .tag-name {
+	color: rgb(127, 0, 85); font-weight: bold;
+}
+.dp-xml .attribute {
+	color: red;
+}
+.dp-xml .attribute-value {
+	color: blue;
+}
+.dp-delphi .comment {
+	color: rgb(0, 130, 0); font-style: italic;
+}
+.dp-delphi .string {
+	color: blue;
+}
+.dp-delphi .number {
+	color: blue;
+}
+.dp-delphi .directive {
+	color: rgb(0, 130, 132);
+}
+.dp-delphi .keyword {
+	color: navy; font-weight: bold;
+}
+.dp-delphi .vars {
+	color: rgb(0, 0, 0);
+}
+.dp-py .comment {
+	color: green;
+}
+.dp-py .string {
+	color: red;
+}
+.dp-py .docstring {
+	color: green;
+}
+.dp-py .keyword {
+	color: blue; font-weight: bold;
+}
+.dp-py .builtins {
+	color: rgb(255, 20, 147);
+}
+.dp-py .magicmethods {
+	color: rgb(128, 128, 128);
+}
+.dp-py .exceptions {
+	color: brown;
+}
+.dp-py .types {
+	color: brown; font-style: italic;
+}
+.dp-py .commonlibs {
+	color: rgb(138, 43, 226); font-style: italic;
+}
+.dp-rb .comment {
+	color: rgb(204, 0, 0);
+}
+.dp-rb .string {
+	color: rgb(255, 0, 204);
+}
+.dp-rb .symbol {
+	color: rgb(2, 185, 2);
+}
+.dp-rb .keyword {
+	color: rgb(0, 102, 153);
+}
+.dp-rb .variable {
+	color: rgb(102, 204, 255);
+}
+.dp-css .comment {
+	color: green;
+}
+.dp-css .string {
+	color: red;
+}
+.dp-css .keyword {
+	color: blue;
+}
+.dp-css .colors {
+	color: darkred;
+}
+.dp-css .vars {
+	color: rgb(221, 0, 0);
+}
+.dp-j .comment {
+	color: rgb(63, 127, 95);
+}
+.dp-j .string {
+	color: rgb(42, 0, 255);
+}
+.dp-j .keyword {
+	color: rgb(127, 0, 85); font-weight: bold;
+}
+.dp-j .annotation {
+	color: rgb(100, 100, 100);
+}
+.dp-j .number {
+	color: rgb(192, 0, 0);
+}
+.dp-cpp .comment {
+	color: rgb(238, 0, 0);
+}
+.dp-cpp .string {
+	color: red;
+}
+.dp-cpp .preprocessor {
+	color: rgb(205, 0, 205); font-weight: bold;
+}
+.dp-cpp .keyword {
+	color: rgb(86, 151, 217); font-weight: bold;
+}
+.dp-cpp .datatypes {
+	color: rgb(46, 139, 87); font-weight: bold;
+}

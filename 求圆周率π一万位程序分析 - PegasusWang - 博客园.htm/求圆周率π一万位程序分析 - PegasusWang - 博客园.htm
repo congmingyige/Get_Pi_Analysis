@@ -1,0 +1,426 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0066)http://www.cnblogs.com/PegasusWang/archive/2013/03/17/2965189.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cn"><HEAD><META content="IE=10.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="utf-8"> 
+<META name="viewport" content="width=device-width, initial-scale=1"> 
+<TITLE>求圆周率π一万位程序分析 - PegasusWang - 博客园</TITLE> <LINK href="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/bundle-arrow.css" 
+rel="stylesheet" type="text/css"> <LINK id="mobile-style" href="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/bundle-arrow-mobile.css" 
+rel="stylesheet" type="text/css" media="only screen and (max-width: 768px)"> 
+<LINK title="RSS" href="http://www.cnblogs.com/PegasusWang/rss" rel="alternate" 
+type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/PegasusWang/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/PegasusWang/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="//common.cnblogs.com/script/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'PegasusWang', cb_enable_mathjax=false;var isLogined=false;</SCRIPT>
+ 
+<SCRIPT src="/bundles/blog-common.js?v=b78TvRjLUot_ZWqMtMABl0y1vv4rdXsk6SSwbMNjBcY1" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.10570.1001"></HEAD> 
+<BODY><A name="top"></A> <!--done--> 
+<DIV id="header"><!--done--> 
+<DIV class="header">
+<DIV class="headerText"><A class="headermaintitle" id="Header1_HeaderTitle" 
+href="http://www.cnblogs.com/PegasusWang/">PegasusWang(个人博客：http://ningning.today 
+ )</A><BR>新博客http://blog.csdn.net/wangpegasus/article/ 本博客停止更新。
+	 </DIV></DIV></DIV>
+<DIV id="mylinks"><!--done--> <A class="menu" id="blog_nav_sitehome" href="http://www.cnblogs.com/">博客园</A>&nbsp;&nbsp;&nbsp;
+<A class="menu" id="blog_nav_myhome" 
+href="http://www.cnblogs.com/PegasusWang/">首页</A>&nbsp;&nbsp;&nbsp;<A class="menu" 
+id="blog_nav_newpost" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" rel="nofollow">新随笔</A>&nbsp;&nbsp;&nbsp;
+<A class="menu" id="blog_nav_contact" accesskey="9" href="https://msg.cnblogs.com/send/PegasusWang" 
+rel="nofollow">联系</A>&nbsp;&nbsp;&nbsp;<A class="menu" id="blog_nav_rss" href="http://www.cnblogs.com/PegasusWang/rss">订阅</A><A 
+id="blog_nav_rss_image" href="http://www.cnblogs.com/PegasusWang/rss"><IMG alt="订阅" 
+src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/xml.gif"></A>&nbsp;&nbsp;&nbsp;
+<A class="menu" id="blog_nav_admin" href="https://i.cnblogs.com/" 
+rel="nofollow">管理</A> </DIV>
+<DIV id="mytopmenu">
+<DIV id="blog_stats">
+<DIV class="blogStats">随笔 - 95&nbsp; 文章 - 17&nbsp;评论 - 10&nbsp;trackbacks - 0 
+</DIV></DIV></DIV>
+<DIV id="leftcontent">
+<DIV id="leftcontentcontainer">
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+<BR><!--done--> 
+<DIV class="newsItem">
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+</DIV></DIV>
+<DIV id="centercontent">
+<DIV id="post_detail"><!--done--> 
+<DIV class="post">
+<DIV class="postTitle">
+<H1><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/PegasusWang/archive/2013/03/17/2965189.html">求圆周率π一万位程序分析</A></H1></DIV>
+<DIV id="cnblogs_post_body">
+<DIV class="Section0">
+<P class="p0">先贴一段维基百科的内容：</P>
+<H3><SPAN class="mw-headline" 
+id=".E9.9B.BB.E8.85.A6.E6.99.82.E4.BB.A3">计算机时代计算π</SPAN></H3>
+<P>上万位以上的小数位值通常利用<A title="高斯-勒让德算法" href="http://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF-%E5%8B%92%E8%AE%A9%E5%BE%B7%E7%AE%97%E6%B3%95">高斯-勒让德算法</A>或<A 
+title="波温算法（页面不存在）" class="new" href="http://zh.wikipedia.org/w/index.php?title=%E6%B3%A2%E6%BA%AB%E7%AE%97%E6%B3%95&amp;action=edit&amp;redlink=1">波温算法</A>；另外以往亦曾使用于<A 
+title="1976年" href="http://zh.wikipedia.org/wiki/1976%E5%B9%B4">1976年</A>发现的<A 
+title="萨拉明-布伦特算法" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E8%90%A8%E6%8B%89%E6%98%8E-%E5%B8%83%E4%BC%A6%E7%89%B9%E7%AE%97%E6%B3%95">萨拉明-布伦特算法</A>。</P>
+<P>第一个π和1/π的小数点后首一百万位利用了<A title="古腾堡计划" href="http://zh.wikipedia.org/wiki/%E5%8F%A4%E8%85%BE%E5%A0%A1%E8%AE%A1%E5%88%92">古腾堡计划</A>。最新纪录是<A 
+title="2002年" href="http://zh.wikipedia.org/wiki/2002%E5%B9%B4">2002年</A><A 
+title="9月" 
+href="http://zh.wikipedia.org/wiki/9%E6%9C%88">9月</A>得出的1,241,100,000,000个小数位，由拥有1<A 
+title="TB" href="http://zh.wikipedia.org/wiki/TB">TB</A>主内存的64-node<A title="日立" 
+href="http://zh.wikipedia.org/wiki/%E6%97%A5%E7%AB%8B">日立</A><A title="超级计算机" 
+class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E8%B6%85%E7%B4%9A%E9%9B%BB%E8%85%A6">超级计算机</A>，以每秒200亿运算速度得出，比旧纪录多算出一倍（206亿小数位）。此纪录由以下<A 
+title="梅钦类公式（页面不存在）" class="new" href="http://zh.wikipedia.org/w/index.php?title=%E6%A2%85%E6%AC%BD%E9%A1%9E%E5%85%AC%E5%BC%8F&amp;action=edit&amp;redlink=1">梅钦类公式</A>得出：</P>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{\pi}{4} = 12 \arctan\frac{1}{49} + 32 \arctan\frac{1}{57} - 5 \arctan\frac{1}{239} + 12 \arctan\frac{1}{110443}" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/524a01f928a2eddfb2d141f7d0089dd6.png">&nbsp;(K. 
+  Takano,&nbsp;<A title="1982年" href="http://zh.wikipedia.org/wiki/1982%E5%B9%B4">1982年</A>)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{\pi}{4} = 44 \arctan\frac{1}{57} + 7 \arctan\frac{1}{239} - 12 \arctan\frac{1}{682} + 24 \arctan\frac{1}{12943}" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/20eeb32761f5204b35a62f50d7d1b2f5.png">&nbsp;(F. 
+  C. W. Störmer,&nbsp;<A title="1896年" href="http://zh.wikipedia.org/wiki/1896%E5%B9%B4">1896年</A>)</DD></DL>
+<P>这么多的小数位没什么实用价值，只用以测试<A title="超级计算机" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E8%B6%85%E7%B4%9A%E9%9B%BB%E8%85%A6">超级计算机</A>。</P>
+<P><A title="1996年" 
+href="http://zh.wikipedia.org/wiki/1996%E5%B9%B4">1996年</A>，David H. 
+Bailey、Peter Borwein及<A title="西蒙·普劳夫" href="http://zh.wikipedia.org/wiki/%E8%A5%BF%E8%92%99%C2%B7%E6%99%AE%E5%8B%9E%E5%A4%AB">西蒙·普劳夫</A>发现了π的其中一个无穷级数：</P>
+<DL>
+  <DD><IMG class="tex" alt="\pi = \sum_{k = 0}^{\infty} \frac{1}{16^k}&#10;\left( \frac{4}{8k + 1} - \frac{2}{8k + 4} - \frac{1}{8k + 5} - \frac{1}{8k + 6}\right)" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/f9733b62958be8751fbab97431c27af5.png"></DD></DL>
+<P>以上述公式可以计算π的第<EM>n</EM>个<A title="二进制" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E4%BA%8C%E9%80%B2%E4%BD%8D">二进制</A>或<A 
+title="十六进制" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E9%80%B2%E4%BD%8D">十六进制</A>小数，而不需先计算首<EM>n</EM>-1个小数位。此类π算法称为<A 
+title="贝利－波尔温－普劳夫公式" href="http://zh.wikipedia.org/wiki/%E8%B4%9D%E5%88%A9%EF%BC%8D%E6%B3%A2%E5%B0%94%E6%B8%A9%EF%BC%8D%E6%99%AE%E5%8A%B3%E5%A4%AB%E5%85%AC%E5%BC%8F">贝利－波尔温－普劳夫公式</A>。请参考<A 
+class="external text" href="http://www.nersc.gov/~dhbailey/" 
+rel="nofollow">Bailey's website</A>&nbsp;上相关<A title="程式" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E7%A8%8B%E5%BC%8F">程式</A>。</P>
+<P><A title="法布里斯·贝拉" href="http://zh.wikipedia.org/wiki/%E6%B3%95%E5%B8%83%E9%87%8C%E6%96%AF%C2%B7%E8%B4%9D%E6%8B%89">法布里斯·贝拉</A>于<A 
+title="1997年" 
+href="http://zh.wikipedia.org/wiki/1997%E5%B9%B4">1997年</A>给出了计算机效率上高出上式47%的BBP算法：</P>
+<DL>
+  <DD><IMG class="tex" alt="\pi = \frac{1}{2^6} \sum_{n=0}^{\infty} \frac{{(-1)}^n}{2^{10n}} \left( - \frac{2^5}{4n+1} - \frac{1}{4n+3} + \frac{2^8}{10n+1} - \frac{2^6}{10n+3} - \frac{2^2}{10n+5} - \frac{2^2}{10n+7} + \frac{1}{10n+9} \right)" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/2c39b196c4eb238086f391bdc6acef7b.png"></DD></DL>
+<P>请参考<A class="external text" href="http://bellard.org/pi/" 
+rel="nofollow">Fabrice Bellard's PI page</A>&nbsp;。</P>
+<P>其他计算圆周率的公式包括：</P>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} \sum^\infty_{k=0} \frac{(4k!)(1103+26390k)}{(k!)^4 396^{4k}} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/77e9fac37840591d2aea360317141f34.png">&nbsp;(拉马努金Ramanujan)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{1}{\pi} = 12 \sum^\infty_{k=0} \frac{(-1)^k (6k)! (13591409 + 545140134k)}{(3k)!(k!)^3 640320^{3k + 3/2}} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/dc88cec756645fb4751542454081ac6d.png">&nbsp;(David 
+  Chudnovsky及Gregory Chudnovsky)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt="\pi = \frac {426880 \sqrt {10005}} {\sum_{k=0}^\infty \frac {(6n)!\ (545140134n + 13591409)} { (n!)^3\ (3n)!\ (-640320)^3n}} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/01447272f932411e954234f7d544df11.png"><A 
+  class="external autonumber" href="http://www.jason314.com/" 
+  rel="nofollow">[2]</A></DD></DL>
+<P>编写计算机程序时，也可以利用<A title="反三角函数" href="http://zh.wikipedia.org/wiki/%E5%8F%8D%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0">反三角函数</A>直接定义<IMG 
+class="tex" alt="\pi" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/522359592d78569a9eac16498aa7a087.png">值，但是编译器必须具备<A 
+title="三角函数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B8">三角函数</A>的函式库：<BR>利用<A 
+title="正弦函数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%AD%A3%E5%BC%A6%E5%87%BD%E6%95%B0">正弦函数</A></P>
+<DL>
+  <DD><IMG class="tex" alt="\sin\left(\pi / 2 \right)=1" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/64f14e66c0b441d309d6a3f675944628.png"></DD>
+  <DD><IMG class="tex" alt="\pi=2*\arcsin\left(1 \right)" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/66620461dc653ec126f8f50f69e3c003.png"></DD></DL>
+<P>利用<A title="余弦函数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E5%87%BD%E6%95%B0">余弦函数</A></P>
+<DL>
+  <DD><IMG class="tex" alt="\cos\left(\pi \right)=-1" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/c4d2e738f486930f8f3b085587217ba1.png"></DD>
+  <DD><IMG class="tex" alt="\pi=\arccos\left(-1 \right)" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/f99f69da2403d69249536ef740305e5d.png"></DD>
+  <DD></DD>
+  <DD></DD>
+  <DD></DD></DL>
+<H3><SPAN class="mw-headline" id=".E5.B9.BE.E4.BD.95"><A title="几何" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E5%B9%BE%E4%BD%95">几何</A></SPAN></H3>
+<DL>
+  <DD>若圆的半径为<EM>r</EM>，则其周长为<EM>C</EM>&nbsp;= 2π<EM>r</EM></DD>
+  <DD>若圆的半径为<EM>r</EM>，则其面积为<EM>S</EM>&nbsp;=π<EM>r</EM><SUP>2</SUP></DD>
+  <DD>若<A title="椭圆" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%A9%A2%E5%9C%93">椭圆</A>的长、短两轴分别为<EM>a</EM>&nbsp;和&nbsp;<EM>b</EM>&nbsp;，则其面积为<EM>S</EM>&nbsp;= 
+  π<EM>ab</EM></DD>
+  <DD>若<A title="球体" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E7%90%83%E9%AB%94">球体</A>的半径为&nbsp;<EM>r</EM>，则其<A 
+  title="体积" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E9%AB%94%E7%A9%8D">体积</A>为&nbsp;<EM>V</EM>&nbsp;= 
+  (4/3)π<EM>r</EM><SUP>3</SUP></DD>
+  <DD>若球体的半径为<EM>r</EM>，则其<A title="表面积" href="http://zh.wikipedia.org/wiki/%E8%A1%A8%E9%9D%A2%E7%A9%8D">表面积</A>为&nbsp;<EM>S</EM>&nbsp;= 
+  4π<EM>r</EM><SUP>2</SUP></DD>
+  <DD><A title="角" href="http://zh.wikipedia.org/wiki/%E8%A7%92">角</A>：180<A 
+  title="角度" href="http://zh.wikipedia.org/wiki/%E8%A7%92%E5%BA%A6">度</A>相等于π<A 
+  title="弧度" 
+href="http://zh.wikipedia.org/wiki/%E5%BC%A7%E5%BA%A6">弧度</A></DD></DL>
+<P>环面的体积和表面积公式</P>
+<DL>
+  <DD><IMG class="tex" alt="A = 4 \pi^2 R r = \left( 2\pi r \right) \left( 2 \pi R \right) \," 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/134c2fbc8be5313b15407b21c72f435a.png"></DD>
+  <DD><IMG class="tex" alt="V = 2 \pi^2 R r^2 = \left( \pi r^2 \right) \left( 2\pi R \right). \," 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/062f0176fb9d315b9cc6ca2c88b6b8db.png"></DD></DL>
+<P>R是管子的中心到画面的中心的距离， r是圆管的半径。</P>
+<H3><SPAN class="editsection">[<A title="编辑章节：代数" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=11">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E4.BB.A3.E6.95.B8"><A title="代数" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B8">代数</A></SPAN></H3>
+<P>π是个<A title="无理数" href="http://zh.wikipedia.org/wiki/%E7%84%A1%E7%90%86%E6%95%B8">无理数</A>，即不可表达成两个<A 
+title="整数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%95%B4%E6%95%B8">整数</A>之比，是由Johann 
+Heinrich Lambert于<A title="1761年" href="http://zh.wikipedia.org/wiki/1761%E5%B9%B4">1761年</A>证明的。&nbsp;<A 
+title="1882年" 
+href="http://zh.wikipedia.org/wiki/1882%E5%B9%B4">1882年</A>，Ferdinand 
+Lindemann更证明了π是<A title="超越数" href="http://zh.wikipedia.org/wiki/%E8%B6%85%E8%B6%8A%E6%95%B8">超越数</A>，即不可能是任何<A 
+title="有理数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%9C%89%E7%90%86%E6%95%B8">有理数</A><A 
+title="多项式" 
+href="http://zh.wikipedia.org/wiki/%E5%A4%9A%E9%A0%85%E5%BC%8F">多项式</A>的根。</P>
+<P>圆周率的超越性否定了<A title="化圆为方" href="http://zh.wikipedia.org/wiki/%E5%8C%96%E5%9C%93%E7%82%BA%E6%96%B9">化圆为方</A>这古老<A 
+title="尺规作图" href="http://zh.wikipedia.org/wiki/%E5%B0%BA%E8%A7%84%E4%BD%9C%E5%9B%BE">尺规作图</A>问题的可能性，因所有尺规作图只能得出<A 
+title="代数数" 
+href="http://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B8%E6%95%B8">代数数</A>，而<A 
+title="超越数" 
+href="http://zh.wikipedia.org/wiki/%E8%B6%85%E8%B6%8A%E6%95%B8">超越数</A>不是<A 
+title="代数数" 
+href="http://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B8%E6%95%B8">代数数</A>。</P>
+<H3><SPAN class="editsection">[<A title="编辑章节：数学分析" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=12">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E6.95.B8.E5.AD.B8.E5.88.86.E6.9E.90"><A title="数学分析" 
+class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%95%B8%E5%AD%B8%E5%88%86%E6%9E%90">数学分析</A></SPAN></H3>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{1}{1} - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \cdots = \frac{\pi}{4} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/8734cd1bd788164765a35d2277556de3.png">&nbsp;(Leibniz定理)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{2}{1} \cdot \frac{2}{3} \cdot \frac{4}{3} \cdot \frac{4}{5} \cdot \frac{6}{5} \cdot \frac{6}{7} \cdot \frac{8}{7} \cdot \frac{8}{9} \cdots = \frac{\pi}{2} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/f601cf16f8d82beca8ceb8211d6ebd6f.png">&nbsp;(Wallis乘积)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" \zeta(2) = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \cdots = \frac{\pi^2}{6} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/f8fd776675e50a0154df135e3bbc4f90.png"></DD>
+  <DD><IMG class="tex" alt="\zeta(4)= \frac{1}{1^4} + \frac{1}{2^4} + \frac{1}{3^4} + \frac{1}{4^4} + \cdots = \frac{\pi^4}{90}" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/a4f2fcc8dbd4cf5af8b0fc7f0ef5aa72.png">(由<A 
+  title="欧拉" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%AD%90%E6%8B%89">欧拉</A>证明，参见<A 
+  title="巴塞尔问题" href="http://zh.wikipedia.org/wiki/%E5%B7%B4%E5%A1%9E%E5%B0%94%E9%97%AE%E9%A2%98">巴塞尔问题</A>)</DD></DL>
+<P>&nbsp;</P>
+<DL>
+  <DD><IMG class="tex" alt=" \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/0df03ac12dcbec455d4eace889610096.png"></DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" n! \approx \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/4ffced8e1286be9140430b02cc57cd88.png">&nbsp;(<A 
+  title="斯特林公式" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E6%96%AF%E7%89%B9%E6%9E%97%E5%85%AC%E5%BC%8F">斯特林公式</A>)</DD></DL>
+<DL>
+  <DD><IMG class="tex" alt=" e^{\pi i} + 1 = 0\; " src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/c652fa850afe246248498adcd1881eb7.png">&nbsp;(<A 
+  title="欧拉公式" href="http://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F">欧拉公式</A>)</DD></DL>
+<P>π有个特别的<A title="连分数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E9%80%A3%E5%88%86%E6%95%B8">连分数</A>表示式：</P>
+<DL>
+  <DD><IMG class="tex" alt=" \frac{4}{\pi} = 1 + \frac{1}{3 + \frac{4}{5 + \frac{9}{7 + \frac{16}{9 + \frac{25}{11 + \frac{36}{13 + ...}}}}}} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/f4617c1392641b9dabb48be0cbdf2330.png"></DD></DL>
+<P>π本身的<A title="连分数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E9%80%A3%E5%88%86%E6%95%B8">连分数</A>表示式(简写)为[3;7,15,1,292,1,1,1,2,1,3,1,14,2,1,1,2,...]，其近似部分给出的首三个渐近分数</P>
+<DL>
+  <DD><IMG class="tex" alt=" 3 + \frac{1}{7} = \frac{22}{7} " src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/5913bb5a97883b9b5ba4c4953c8b077e.png"></DD>
+  <DD><IMG class="tex" alt=" 3 + \frac{1}{7 + \frac{1}{15}} = \frac{333}{106} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/fb5c4654ddf19ee66434092ea49ef2ee.png"></DD>
+  <DD><IMG class="tex" alt=" 3 + \frac{1}{7 + \frac{1}{15 + \frac{1}{1}}} = \frac{355}{113} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/2808d83b1e7b5843eeb631c747dbf38c.png"></DD></DL>
+<P>第一个和第三个渐近分数即为约率和密率的值。数学上可以证明，这样得到的渐近分数，在分子或分母小于下一个渐进分数的分数中，其值是最接近精确值的近似值。</P>
+<P>(另有12个表达式见于<A class="external autonumber" href="http://functions.wolfram.com/Constants/Pi/10/" 
+rel="nofollow">[3]</A>&nbsp;)</P>
+<H3><SPAN class="editsection">[<A title="编辑章节：数论" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=13">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E6.95.B8.E8.AB.96"><A title="数论" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E6%95%B8%E8%AB%96">数论</A></SPAN></H3>
+<DL>
+  <DD>两个任意自然数是<A title="互质" href="http://zh.wikipedia.org/wiki/%E4%BA%92%E8%B3%AA">互质</A>的<A 
+  title="概率" href="http://zh.wikipedia.org/wiki/%E6%A6%82%E7%8E%87">概率</A>是<IMG 
+  class="tex" alt="\frac{6}{\pi^2}" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/1ffef1f77dfabf7ea5f343620dbf12ab.png">。</DD>
+  <DD>任取一个任意整数，该整数没有重复质因子的<A title="概率" href="http://zh.wikipedia.org/wiki/%E6%A6%82%E7%8E%87">概率</A>为<IMG 
+  class="tex" alt="\frac{6}{\pi^2}" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/1ffef1f77dfabf7ea5f343620dbf12ab.png">。</DD>
+  <DD>一个任意整数平均可用<IMG class="tex" alt="\frac{\pi}{4}" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/d4aa55219ea9047bd46fc7b25e769d7a.png">个方法写成两个<A 
+  title="完全数" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E5%AE%8C%E5%85%A8%E6%95%B8">完全数</A>之和。</DD></DL>
+<H3><SPAN class="editsection">[<A title="编辑章节：概率论" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=14">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E6.A6.82.E7.8E.87.E8.AB.96"><A title="概率论" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E6%A6%82%E7%8E%87%E8%AB%96">概率论</A></SPAN></H3>
+<DL>
+  <DD>取一枚长度为l的针，再取一张白纸在上面画上一些距离为2l的平行线。把针从一定高度释放，让其自由落体到纸面上。针与平行线相交的概率是圆周率的倒数（<A 
+  title="布丰投针问题" href="http://zh.wikipedia.org/wiki/%E5%B8%83%E8%B1%90%E6%8A%95%E9%87%9D%E5%95%8F%E9%A1%8C">泊松针</A>）。曾经有人以此方法来寻找π的值。</DD></DL>
+<H3><SPAN class="editsection">[<A title="编辑章节：动态系统／遍历理论" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=15">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E5.8B.95.E6.85.8B.E7.B3.BB.E7.B5.B1.EF.BC.8F.E9.81.8D.E6.AD.B7.E7.90.86.E8.AB.96">动态系统／遍历理论</SPAN></H3>
+<DL>
+  <DD><IMG class="tex" alt=" \lim_{n \to \infty} \frac{1}{n} \sum_{i = 1}^{n} \sqrt{x_i} = \frac{2}{\pi} " 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/357aab88d37286714a51d54ec23471d5.png"></DD></DL>
+<DL>
+  <DD>对[0, 
+  1]中几乎所有<EM>x</EM><SUB>0</SUB>，其中&nbsp;<EM>x</EM><SUB><EM>i</EM></SUB>是对于<EM>r</EM>=4的逻辑图像迭代数列。</DD></DL>
+<H3><SPAN class="editsection">[<A title="编辑章节：物理学" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=16">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E7.89.A9.E7.90.86.E5.AD.B8"><A title="物理学" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%AD%B8">物理学</A></SPAN></H3>
+<P><IMG class="tex" alt=" \Delta x \Delta p  \ge \frac{h}{4\pi} " src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/44a92182cbc70c47eb3b1a134c2a1ebb.png">&nbsp;(<A 
+title="不确定性原理" href="http://zh.wikipedia.org/wiki/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86">海森堡不确定性原理</A>)</P>
+<P><IMG class="tex" alt=" R_{ik} - {g_{ik} R \over 2} + \Lambda g_{ik} = {8 \pi G \over c^4} T_{ik} " 
+src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/e933081a2959e73642e6205eb99f95af.png">&nbsp;(<A 
+title="相对论的场方程（页面不存在）" class="new" href="http://zh.wikipedia.org/w/index.php?title=%E7%9B%B8%E5%B0%8D%E8%AB%96%E7%9A%84%E5%A0%B4%E6%96%B9%E7%A8%8B&amp;action=edit&amp;redlink=1">相对论的场方程</A>)</P>
+<H3><SPAN class="editsection">[<A title="编辑章节：统计学" href="http://zh.wikipedia.org/w/index.php?title=%E5%9C%93%E5%91%A8%E7%8E%87&amp;action=edit&amp;section=17">编辑</A>]</SPAN><SPAN 
+class="mw-headline" id=".E7.B5.B1.E8.A8.88.E5.AD.B8"><A title="统计学" class="mw-redirect" 
+href="http://zh.wikipedia.org/wiki/%E7%B5%B1%E8%A8%88%E5%AD%B8">统计学</A></SPAN></H3>
+<DL>
+  <DD><IMG class="tex" alt="f(x) = {1 \over \sigma\sqrt{2\pi} }\,e^{-{(x-\mu )^2 \over 2\sigma^2}}" 
+  src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/34080cb5cf74a87f626c540372f222c0.png">&nbsp;（此为<A 
+  title="常态分配" class="mw-redirect" href="http://zh.wikipedia.org/wiki/%E5%B8%B8%E6%85%8B%E5%88%86%E9%85%8D">常态分配</A>的<A 
+  title="机率密度函数" href="http://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">机率密度函数</A>）</DD></DL>
+<P class="p0">求圆周率π<SPAN style="font-family: 宋体;">的</SPAN>C<SPAN style="font-family: 宋体;">程序</SPAN>分析</P>
+<P class="p0">&nbsp;</P>
+<P 
+class="p0">long&nbsp;a=10000,&nbsp;b,&nbsp;c=2800,&nbsp;d,&nbsp;e,&nbsp;f[2801],&nbsp;g;<BR>main(){&nbsp;for(;b-c;)&nbsp;f[b++]=a/5;<BR>for(;d=0,g=c*2;c-=14,printf("%.4d",e+d/a),e=d%a)<BR>for(b=c;&nbsp;d+=f[b]*a,&nbsp;f[b]=d%--g,&nbsp;d/=g--,&nbsp;--b;&nbsp;d*=b);&nbsp;scanf("%s");}<BR><BR>简短的4行代码，就可以精确计算机出800位的PI（圆周率）值。<BR>实在太震撼人心了。这样的程序也能运行，竟然还能能完成这样让人难以置信的任务，真是太神了。<BR><BR>一、源程序<BR>本文分析下面这个很流行的计算PI的小程序。下面这个程序初看起来似乎摸不到头脑，不过不用担心，当你读完本文的时候就能够基本读懂它了。程序一：很牛的计算Pi的程序<BR>#include&nbsp;&lt;stdio.h&gt;<BR>int&nbsp;a=10000,b,c=2800,d,e,f[2801],g;&nbsp;<BR>main()<BR>{<BR>for(;b-c;)<BR>&nbsp;&nbsp;&nbsp;&nbsp;f[b++]=a/5;<BR>for(;d=0,g=c*2;c&nbsp;-=14,printf("%.4d",e+d/a),e=d%a)<BR>&nbsp;&nbsp;&nbsp;&nbsp;for(b=c;&nbsp;d+=f[b]*a,f[b]=d%--g,d/=g--,--b;&nbsp;d*=b);<BR>}<BR><BR>二、数学公式<BR>数学家们研究了数不清的方法来计算PI,这个程序所用的公式如下：<BR><BR>pi&nbsp;=&nbsp;2&nbsp;+&nbsp;1/3&nbsp;*&nbsp;(2&nbsp;+&nbsp;2/5&nbsp;*&nbsp;(2&nbsp;+&nbsp;3/7&nbsp;*&nbsp;(2&nbsp;+&nbsp;...&nbsp;&nbsp;(2&nbsp;+&nbsp;k/2k+1&nbsp;*&nbsp;(2&nbsp;+&nbsp;...&nbsp;))...)))<BR><BR>至于这个公式为什么能够计算出PI，已经超出了本文的能力范围。<BR>下面要做的事情就是要分析清楚程序是如何实现这个公式的。<BR>我们先来验证一下这个公式：<BR>程序二：Pi公式验证程序<BR>#include&nbsp;&lt;stdio.h&gt;<BR>void&nbsp;main()<BR>{<BR>&nbsp;&nbsp;&nbsp;float&nbsp;pi=2;<BR>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;i;<BR>&nbsp;&nbsp;&nbsp;for(i=100;i&gt;=1;i--)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pi=pi*(float)i/(2*i+1)+2;<BR>&nbsp;&nbsp;&nbsp;printf("%f\n",pi);<BR>&nbsp;&nbsp;&nbsp;getchar();<BR>}<BR>上面这个程序的结果是3.141593。<BR><BR>三、程序展开<BR>在正式分析程序之前，我们需要对程序一进行一下展开。我们可以看出程序一都是使用for循环来完成计算的，这样做虽然可以使得程序短小，但是却很难读懂。根据for循环的运行顺序，我们可以把它展开为如下while循环的程序：<BR><BR>程序三：for转换为while之后的程序<BR>#include&nbsp;&lt;stdio.h&gt;<BR>int&nbsp;a=10000,b,c=2800,d,e,f[2801],g;<BR>main()&nbsp;{<BR>int&nbsp;i;<BR>for(i=0;i&lt;c;i++)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i]=a/5;<BR>while(c!=0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g=c*2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b=c;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(1)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d+f[b]*a;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[b]=d%g;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d/g;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(b==0)&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d*b;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c=c-14;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%.4d",e+d/a);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e=d%a;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR><BR>注：<BR>for([1];[2];[3])&nbsp;{[4];}的运行顺序是[1],[2],[4],[3]。如果有逗号操作符，例如：d=0,g=c*2，则先运行d=0,然后运行g=c*2,并且最终的结果是最后一个表达式的值，也就是这里的c*2。<BR><BR>下面我们就针对展开后的程序来分析。<BR><BR>四、程序分析<BR>要想计算出无限精度的PI，我们需要上述的迭代公式运行无数次，并且其中每个分数也是完全精确的，这在计算机中自然是无法实现的。那么基本实现思想就是迭代足够多次，并且每个分数也足够精确，这样就能够计算出PI的前n位来。上面这个程序计算800位，迭代公式一共迭代2800次。<BR>int&nbsp;a=10000,b,c=2800,d,e,f[2801],g;<BR>这句话中的2800就是迭代次数。<BR><BR><BR>由于float或者double的精度远远不够，因此程序中使用整数类型（实际是长整型），分段运算（每次计算4位）。我们可以看到输出语句printf("%.4d",e+d/a);&nbsp;其中%.4就是把计算出来的4位输出，我们看到c每次减少14（&nbsp;c=c-14;），而c的初始大小为2800，因此一共就分了200段运算，并且每次输出4位，所以一共输出了800位。<BR><BR>由于使用整型数运算，因此有必要乘上一个系数，在这个程序中系数为1000，也就是说，公式如下：<BR><BR>1000*pi&nbsp;=&nbsp;2K+&nbsp;1/3&nbsp;*&nbsp;(2K+&nbsp;2/5&nbsp;*&nbsp;(2K+&nbsp;3/7&nbsp;*&nbsp;(2K+&nbsp;...&nbsp;(2K+&nbsp;k/2k+1&nbsp;*&nbsp;(2K+&nbsp;...&nbsp;))...)))<BR><BR>这里的2K表示2000，也就是f[2801]数组初始化以后的数据,a=10000,a/5=2000,所以下面的程序把f中的每个元素都赋值为2000：<BR>for(i=0;i&lt;c;i++)<BR>f[i]=a/5;<BR><BR>你可能会觉得奇怪，为什么这里要把一个常数储存到数组中去，请继续往下看。<BR><BR>我们先来跟踪一下程序的运行：<BR>while(c!=0)&nbsp;&nbsp;//假设这是第一次运行，c=2800，为迭代次数<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g=c*2;&nbsp;&nbsp;//这里的g是用来做k/(2k+1)中的分子<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b=c;&nbsp;&nbsp;//这里的b是用来做k/(2k+1)中的分子<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(1)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(1)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d+f[b]*a;&nbsp;&nbsp;//f中的所有的值都为2000，这里在计算时又把系数扩大了a=10000倍。这样做的目的稍候介绍，你可以看到输出的时候是d/a,所以这不影响计算<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[b]=d%g;&nbsp;&nbsp;//先不管这一行<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d/g;&nbsp;&nbsp;//第一次运行的g为2*2799+1，你可以看到g做了分母<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(b==0)&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d*b;&nbsp;&nbsp;//这里的b为2799，可以看到b做了分子。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c=c-14;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%.4d",e+d/a);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e=d%a;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR><BR>只需要粗略的看看上面的程序，我们就大概知道它的确是使用的那个迭代公式来计算Pi的了，不过不知道到现在为止你是否明白了f数组的用处。如果没有明白，请继续阅读。<BR>d=d/g,这一行的目的是除以2k+1，我们知道之所以程序无法精确计算的原因就是这个除法。即使用浮点数，答案也是不够精确的，因此直接用来计算800位的Pi是不可能的。那么不精确的成分在哪里？很明显：就是那个余数d%g。程序用f数组把这个误差储存起来，在下次计算的时候使用。现在你也应该知道为什么d=d+f[b]*a;中间需要乘上a了吧。把分子扩大之后，才好把误差精确的算出来。<BR>d如果不乘10000这个系数，则其值为2000，那么运行d=d/g；则是2000/(2*2799+1)，这种整数的除法答案为0，根本无法迭代下去了。<BR>现在我们知道程序就是把余数储存起来，作为下次迭代的时候的参数，那么为什么这么做就可以使得下次迭代出来的结果为接下来的数字呢？<BR>这实际上和我们在纸上作除法很类似：<BR><BR>　　　0142<BR>　　/———<BR>　7/　1<BR>　　　10<BR>　　　&nbsp;7<BR>——————<BR>　　　&nbsp;30<BR>　　　&nbsp;28<BR>——————<BR>　　　　20<BR>　　　　14<BR>——————<BR>　　　　&nbsp;6<BR>.....<BR><BR>我们可以发现，在做除法的时候，我们通常把余数扩大之后再来计算，f中既然储存的是余数，而f[b]*a;则正好把这个余数扩大了a倍，然后如此循环下去，可以计算到任意精度。<BR>这里要说明的是，事实上每次计算出来的d并不一定只有4位数，例如第一次计算的时候，d的值为31415926，输出4位时候，把低四位的值储存在e中间，e=d%a，也就是5926。<BR><BR>最后，这个c=c-14不太好理解。事实上没有这条语句，程序计算出来的仍然正确。只是因为如果迭代2800次，无论分数如何精确，最后Pi的精度只能够达到800。<BR>你可以把程序改为如下形式尝试一下：<BR><BR>for(i=0;i&lt;800;i++)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g=c*2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b=c;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(1)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d+f[b]*a;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[b]=d%g;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d/g;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(b==0)&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d*b;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//c=c-14;&nbsp;&nbsp;//不要这句话。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%.4d",e+d/a);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e=d%a;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>最后的答案仍然正确。<BR>不过我们可以看到内循环的次数是c次，也就是说每次迭代计算c次。而每次计算后续位数的时候，迭代次数减少14，而不影响精度。</P>
+<P class="p0">还有一篇相关文章：转自http://www.yangfei.org/post/74.html</P>
+<P>网上流传着一个怪异的求pi程序，虽然只有三行却能求出pi值连小数点前共800位。你可以运行一下试试，我第一次运行也被这程序吓住了。这个程序如下：</P>
+<P>/*某年Obfuscated C Contest佳作选录:*/&nbsp;<BR>#include &lt; stdio.h&gt;<BR>long 
+a=10000, b, c=2800, d, e, f[2801], 
+g;&nbsp;<BR>main(){<BR>for(;b-c;)f[b++]=a/5;&nbsp;<BR>for(;d=0,g=c*2;c-=14,printf("%.4d",e+d/a),e=d%a)&nbsp;<BR>for(b=c;d+=f[b]*a,f[b]=d%--g,d/=g--,--b;d*=b);<BR>}</P>
+<P>/* (本程式可算出pi值连小数点前共800位)&nbsp;<BR>(本程式录自sci.math FAQ,原作者未详)*/</P>
+<P>咋一看，这程序还挺吓人的。别慌，下面就告诉你它是如何做到的，并且告诉你写怪异C程序的一些技巧。^_^</P>
+<P>展开化简<BR>&nbsp;&nbsp;&nbsp; 我们知道，在C语言中，for循环和while循环可以互相代替。</P>
+<P>&nbsp;&nbsp;&nbsp; 
+for(statement1;statement2;statement3){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+statements;<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>上面的for语句可以用下面的while语句来代替：</P>
+<P>&nbsp;&nbsp;&nbsp; statement1;<BR>&nbsp;&nbsp;&nbsp; 
+while(statement2){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+statements;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+statement3;<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>而且要写怪异的C程序，逗号运算符无疑是一个好的助手，它的作用是：&nbsp;<BR>从左到右依次计算各个表达式的值，并且返回最右边表达式的值。<BR>把它嵌入for循环中是写怪异代码的常用技巧之一。所以，上面的程序可以展开为：&nbsp;<BR>#include 
+&lt; stdio.h&gt; /*1*/<BR>/*2*/<BR>long a=10000, b, c=2800, d, e, f[2801], g; 
+/*3*/<BR>main(){ /*4*/<BR>&nbsp;&nbsp;&nbsp; while(b-c!=0){ 
+/*5*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f[b]=a/5; 
+/*6*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b++; 
+/*7*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+/*8*/<BR>&nbsp;&nbsp;&nbsp; d=0; /*9*/<BR>&nbsp;&nbsp;&nbsp; g=c*2; 
+/*10*/<BR>&nbsp;&nbsp;&nbsp; while(g!=0){ 
+/*11*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=c; 
+/*12*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d+=f[b]*a; 
+/*13*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f[b]=d%--g; 
+/*14*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d=d/g--; 
+/*15*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --b; 
+/*16*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while(b!=0){ 
+/*17*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=d*b+f[b]*a; 
+/*18*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+f[b]=d%--g; 
+/*19*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=d/g--; 
+/*20*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--b; 
+/*21*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+/*22*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c-=14; 
+/*23*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%.4d",e+d/a); 
+/*24*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e=d%a; 
+/*25*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d=0; 
+/*26*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g=c*2; 
+/*27*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+/*28*/<BR>&nbsp;&nbsp;&nbsp; } /*29*/</P>
+<P>现在是不是好看一点了？</P>
+<P>进一步化简<BR>&nbsp;&nbsp;&nbsp; 
+你应该能注意到a的值始终是10000，所以我们可以把a都换成10000。再就是，仔细观察g，在外层循环中，每次循环用它做除法或取余时，它总是等于2*c-1，而b总是初始化为c。在内层循环中，b每次减少1，g每次减少2。你这时会想到了吧？用2*b-1代替g！代进去试试，没错！另外，我们还能做一点化简，第26行的d=0是多余的，我们把它合并到第13行中去，第13行可改写为： 
+d=f[b]*a;　。所以程序可以改为：&nbsp;<BR>#include &lt; stdio.h&gt;</P>
+<P>long b, c=2800, d, e, f[2801];&nbsp;<BR>main(){<BR>&nbsp;&nbsp;&nbsp; 
+while(b-c!=0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+f[b]=2000;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+b++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; while(c!=0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+b=c;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=f[b]*10000;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+f[b]=d%(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=d/(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--b;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+while(b!=0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=d*b+f[b]*10000;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+f[b]=d%(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=d/(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--b;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+c-=14;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+printf("%.4d",e+d/10000);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+e=d%10000;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+}</P>
+<P>少了两个变量了!</P>
+<P>深入分析<BR>&nbsp;&nbsp;&nbsp; 
+好了，马上进入实质性的分析了。一定的数学知识是非常有必要的。首先,必须知道下面的公式可以用来求pi:&nbsp;<BR>pi/2=1+1!/3!!+2!/5!!+3!/7!!+...+k!/(2*k+1)!!+...（注：双阶乘</P>
+<PRE class="best-text mb-10">双阶乘m!!表示：   当m是自然数时，表示不超过m且与m有相同奇偶性的所有正整数的乘积。如：3!!=1*3=3,6!!=2*4*6=48（另0!!=1）   当m是负奇数时，表示绝对值小于它的绝对值的所有负奇数的绝对值积的倒数。如：（-7）!!=1/(|-5| * |-3| * |-1|)=1/15   当m是负偶数时，m!!。</PRE>
+<PRE class="answer-text mb-10">(2n-1)!!=1*3*5*7......(2n-1)<BR>(2n)!!=2*4*6*8...........(2n) <BR><BR>比如7!!=1*3*5*7<BR>8!!=2*4*6*8）</PRE>
+<P><BR>只要项数足够多，pi就有足够的精度。至于为什么，我们留给数学家们来解决。<BR>&nbsp;&nbsp;&nbsp; 
+写过高精度除法程序的人都知道如何用整数数组来进行除法用法，而避免小数。其实很简单，回想一下你是如何徒手做除法的。用除数除以被除数，把得数放入结果中，余数乘以10后继续做下一步除法，直到余数是零或达到了要求的位数。<BR>&nbsp;&nbsp;&nbsp; 
+原程序使用的数学知识就那么多,之所以复杂难懂是因为它把算法非常巧妙地放到循环中去了。我们开始具体来分析程序。首先，我们从数学公式开始下手。我们求的是pi，而公式给出的是pi/2。所以，我们把公式两边同时乘以2得:</P>
+<P>&nbsp;&nbsp;&nbsp; 
+pi=2*1+2*1!/3!!+2*2!/5!!+2*3!/7!!+...+2*k!/(2*k+1)!!+...</P>
+<P>接着，我们把它改写成另一种形式,并展开：</P>
+<P>&nbsp;&nbsp;&nbsp; pi=2*1+2*1!/3!!+2*2!/5!!+2*3!/7!!+...+2*n!/(2*n+1)!!</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp; 
+=2*(n-1)/(2*n-1)*(n-2)/(2*n-3)*(n-3)/(2*n-5)*...*3/7*2/5*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*(n-2)/(2*n-3)*(n-3)/(2*n-5)*...*3/7*2/5*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*(n-3)/(2*n-5)*...*3/7*2/5*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*3/7*2/5*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*2/5*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*1/3<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++2*1<BR>对着公式看看程序，可以看出，b对应公式中的n，2*b-1对应2*n-1。b是从2800开始的，也就是说n=2800。（至于为什么n=2800时,能保证pi的前800位准确不在此讨论范围。）看程序中的相应部分：&nbsp;<BR>d=d*b+f[b]*10000;<BR>f[b]=d%(b*2-1);<BR>d=d/(b*2-1);</P>
+<P>d用来存放除法结果的整数部分，它是累加的，所以最后的d将是我们要的整数部分。而f[b]用来存放计算到b为止的余数部分。<BR>&nbsp;&nbsp;&nbsp; 
+到这里你可能还不明白。一是，为什么数组有2801个元素？很简单，因为作者想利用f[1]~f[2800]，而C语言的数组下标又是从0开始的，f[0]是用不到的。二是，为什么要把数组元素除了f[2800]都初始化为2000？10000有什么作用？这倒很有意思。因为从printf("%.4d",e+d/10000); 
+看出d/10000是取d的第4位以前的数字，而e=d%10000;　，e是d的后4位数字。而且，e和d差着一次循环。所以打印的结果恰好就是我们想要的pi的相应的某4位！开始时之所以把数组元素初始化为2000，是因为把pi放大1000倍才能保证整数部分有4位，而那个2就是我们公式中两边乘的2！所以是2000！注意，余数也要相应乘以10000而不是10！f[2800]之所以要为0是因为第一次乘的是n-1也就是2799而不是2800!每计算出4位，c都要相应减去 
+14，也就保证了一共能够打印出4*2800/14=800位。但是，这竟然不会影响结果的准确度！本人数学功底不高，无法给出确切答案。（要是哪位达人知道，请发email到xiyou.wangcong@gmail.com告诉我哦。）&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+偶然在网上见到一个根据上面的程序改写的“准确”（这个准确是指没有漏掉f[]数组中的的任何一个元素。）打印2800位的程序，如下：</P>
+<P>long b,c=2800,d,e,f[2801],g;<BR>int main(int argc,char* 
+argv[])<BR>{<BR>&nbsp;&nbsp;&nbsp; 
+for(b=0;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f[b] = 
+2;<BR>&nbsp;&nbsp;&nbsp; e=0;<BR>&nbsp;&nbsp;&nbsp; while(c &gt; 
+0)<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for(b=c;b&gt;0;b--)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d*=b;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d+=f[b]*10;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+f[b]=d%(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d/=(b*2-1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+c-=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+printf("%d",(e+d/10)%10);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+e=d%10;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; return 0;<BR>}</P>
+<P>不妨试试把上面的程序压缩成3行。</P>
+<P>我稀里糊涂算是看完了，但是对那个计算π的公式还是没有推出来。我翻了一下高数课本，找了一下arcsin和<IMG alt="" src="求圆周率π一万位程序分析%20-%20PegasusWang%20-%20博客园_files/18175617-357de1b90b224e74b980512d3e27100c.jpg">arccos的幂级数公式</P>
+<PRE class="best-text mb-10">arccosx<BR>=π/2-arcsinx<BR>=π/2-∫[0,x]d(arcsinx)<BR>=π/2-∫[0,x]dx/√(1-x^2)<BR>=π/2-∫[0,x]∑[(2k)!/(2^k*k!)^2]x^(2k)<BR>=π/2-∑[(2k)!/((2k+1)(2^k*k!))]x^(2k+1)(k=0,1,2,3,4.....)，<BR><BR>如果让x=1，可以得到arccos1 = 0 =</PRE>
+<PRE class="best-text mb-10">=π/2-∑[(2k)!/((2k+1)(2^k*k!))]x^(2k+1)(k=0,1,2,3,4.....)，<BR>所以</PRE>
+<PRE class="best-text mb-10">π/2 = ∑[(2k)!/((2k+1)(2^k*k!))]x^(2k+1)(k=0,1,2,3,4.....)，<BR>但是和给的公式不一样，不知道那个是怎么推出来的。</PRE></DIV></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="BlogPostCategory"></DIV>
+<DIV id="EntryTag"></DIV>
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV>
+<DIV class="postDesc">posted on <SPAN id="post-date">2013-03-17 23:05</SPAN> <A 
+href="http://www.cnblogs.com/PegasusWang/">PegasusWang</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="https://i.cnblogs.com/EditPosts.aspx?postid=2965189" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2965189);return false;" href="http://www.cnblogs.com/PegasusWang/archive/2013/03/17/2965189.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,cb_blogId=140102,cb_entryId=2965189,cb_blogApp=currentBlogApp,cb_blogUserGuid='d61933db-17de-e111-aa3f-842b2b196315',cb_entryCreatedDate='2013/3/17 23:05:00';loadViewCount(cb_entryId);</SCRIPT>
+ </DIV><A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);" clientidmode="Static" 
+runat="server">刷新评论</A><A onclick="return RefreshPage();" href="http://www.cnblogs.com/PegasusWang/archive/2013/03/17/2965189.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/PegasusWang/archive/2013/03/17/2965189.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="ad_t2"></DIV>
+<DIV id="opt_under_post"></DIV>
+<DIV class="c_ad_block" id="cnblogs_c1"></DIV>
+<DIV id="under_post_news"></DIV>
+<DIV class="c_ad_block" id="cnblogs_c2"></DIV>
+<DIV id="under_post_kb"></DIV>
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</SCRIPT>
+ </DIV><!--done--> 
+<DIV class="footer">		Copyright ©2017 PegasusWang Powered by: <A class="footerlink" 
+href="http://www.cnblogs.com/">博客园</A> 模板提供：<A class="footerlink" href="http://blog.hjenglish.com/">沪江博客</A><BR></DIV></DIV></BODY></HTML>

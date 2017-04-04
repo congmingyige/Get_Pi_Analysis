@@ -1,0 +1,186 @@
+.article_manage {
+	font: 12px/22px Arial; margin: 0px -20px; padding: 0px 20px 5px; text-align: right; color: rgb(153, 153, 153); overflow: hidden; border-bottom-color: rgb(237, 237, 237); border-bottom-width: 1px; border-bottom-style: solid; font-size-adjust: none; font-stretch: normal;
+}
+.article_manage span {
+	margin: 0px 5px;
+}
+.article_manage .link_postdate {
+	margin: 0px 5px 0px 0px;
+}
+.article_manage .link_view {
+	background: url("../../../images/ico_view.png") no-repeat left; padding: 0px 0px 0px 14px; _background: url(../../../images/ico_view.gif) no-repeat left center;
+}
+.article_manage .link_comments {
+	background: url("../../../images/ico_comm.png") no-repeat left; padding: 0px 0px 0px 14px; _background: url(../../../images/ico_comm.gif) no-repeat left center;
+}
+.article_manage .link_categories {
+	float: left;
+}
+.list_view {
+	margin: 0px 20px; padding: 5px 0px;
+}
+.list_view .article_title {
+	font: 14px/30px Arial !important; margin: 0px !important; height: 30px; overflow: hidden; float: left; display: inline; white-space: nowrap; -ms-text-overflow: ellipsis; font-size-adjust: none !important; font-stretch: normal !important;
+}
+.list_view .article_title::after {
+	content: "...";
+}
+.list_view .article_title h3 {
+	font: 12px/30px Arial !important; font-size-adjust: none !important; font-stretch: normal !important;
+}
+.list_view .article_title h1 {
+	font: 12px/30px Arial !important; font-size-adjust: none !important; font-stretch: normal !important;
+}
+.list_view .article_manage {
+	padding: 0px !important; text-align: right !important; line-height: 30px !important; float: right; display: inline; white-space: nowrap;
+}
+.list_view .article_description {
+	display: none !important;
+}
+.list_view .article_manage span {
+	margin: 0px !important;
+}
+.article_l {
+	width: 100%; float: left;
+}
+.category_l img {
+	vertical-align: middle;
+}
+.category_l span {
+	vertical-align: middle; display: inline-block;
+}
+.article_l span a {
+	margin-right: 10px; display: inline-block;
+}
+.article_r .fa {
+	font-weight: normal;
+}
+.category {
+	margin: 0px -20px; padding: 5px 20px; border-bottom-color: rgb(237, 237, 237); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.category_l {
+	display: inline-block;
+}
+.category_r {
+	display: inline-block;
+}
+.category_l {
+	width: 70px; color: rgb(51, 51, 51); line-height: 28px; font-size: 14px; float: left;
+}
+.category_r {
+	width: 90%; color: rgb(223, 52, 52); font-size: 14px; float: left;
+}
+.category_r .subItem_t .J_close {
+	color: rgb(204, 204, 204); line-height: 42px; font-size: 16px; font-style: normal; font-weight: normal; float: right;
+}
+.category_r em {
+	font-style: normal;
+}
+.category_r label {
+	line-height: 28px; margin-left: 15px; display: inline-block; position: relative; cursor: pointer;
+}
+.category_r label .fa {
+	color: rgb(153, 153, 153);
+}
+.category_r label .fa-caret-up {
+	display: none;
+}
+.subItem {
+	background: rgb(255, 255, 255); border: 1px solid rgb(220, 220, 220); border-image: none; left: -10px; top: 46px; width: 400px; color: rgb(51, 51, 51); display: none; position: absolute; z-index: 9999; max-height: 400px; box-shadow: 5px 0px 10px #dcdcdc;
+}
+.subItem::after {
+	background: url("../images/triangle.png") no-repeat; left: 20px; top: -10px; width: 10px; height: 10px; display: block; position: absolute; content: "";
+}
+.subItem .subItem_l li a {
+	color: rgb(51, 51, 51);
+}
+.subItem_t {
+	padding: 0px 20px 0px 15px; height: 42px; color: rgb(153, 153, 153); line-height: 42px; border-bottom-color: rgb(220, 220, 220); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.category_r .subItem_t .fa-close {
+	color: rgb(204, 204, 204); line-height: 42px; font-size: 16px; font-weight: normal; float: right;
+}
+.subItem_l {
+	list-style: none; margin: 0px; padding: 0px; -ms-overflow-y: auto; max-height: 358px;
+}
+.subItem .subItem_l li {
+	padding: 0px 20px; height: 52px; line-height: 52px; border-bottom-color: rgb(238, 238, 238); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.subItem_l li em {
+	margin-right: 10px; vertical-align: middle; display: inline-block;
+}
+.subItem_l li a {
+	width: 95%; color: rgb(51, 51, 51); overflow: hidden; font-size: 14px; vertical-align: middle; display: inline-block; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.similar_article {
+	overflow: hidden;
+}
+.similar_article h4 {
+	color: rgb(51, 51, 51); font-size: 16px;
+}
+.similar_c {
+	border: 1px solid rgb(187, 187, 187); border-image: none;
+}
+.similar_c_t {
+	line-height: 45px; border-bottom-color: rgb(220, 220, 220); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.similar_c_t label {
+	color: rgb(102, 102, 102); font-size: 16px; margin-left: 25px; display: inline-block;
+}
+.similar_c_t label em {
+	font-style: normal;
+}
+.similar_c_t .similar_cur {
+	font-weight: bold;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.similar_wrap {
+	background: rgb(252, 252, 252); padding: 10px 20px; -ms-overflow-y: auto; max-height: 180px;
+}
+.similar_list {
+	list-style: none; margin: 0px; padding: 0px; width: 49%;
+}
+.similar_list li {
+	list-style: none; line-height: 30px;
+}
+.similar_list li em {
+	font-style: normal; margin-right: 10px; vertical-align: middle; display: inline-block;
+}
+.similar_list li a {
+	width: 50%; color: rgb(51, 51, 51); overflow: hidden; vertical-align: middle; display: inline-block; white-space: nowrap; -ms-text-overflow: ellipsis;
+}
+.similar_list li a:hover {
+	color: rgb(254, 0, 0);
+}
+.similar_list li span {
+	color: rgb(187, 187, 187); font-size: 12px; margin-left: 9px; display: inline-block;
+}
+.similar_list li label {
+	color: rgb(187, 187, 187); font-size: 12px; margin-left: 9px; display: inline-block;
+}
+.similar_list li label i {
+	font-style: normal; font-weight: normal;
+}
+.similar_list li label b {
+	font-style: normal; font-weight: normal;
+}
+.similar_list li label b {
+	margin-left: 5px;
+}
+.MoreArticle {
+	background: rgb(252, 252, 252); height: 35px; text-align: center; color: rgb(102, 102, 102); line-height: 35px; clear: both; font-size: 12px; display: block;
+}
+.MoreArticle:hover {
+	background: rgb(242, 242, 242);
+}
+.bog_copyright {
+	padding: 20px 0px;
+}
+.copyright_p {
+	height: 14px; color: rgb(102, 102, 102); line-height: 14px; padding-left: 10px; font-size: 14px; border-left-color: rgb(228, 28, 30); border-left-width: 3px; border-left-style: solid;
+}

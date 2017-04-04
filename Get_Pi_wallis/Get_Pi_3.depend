@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1489578134 source:e:\za\get_pi\get_pi_3\main.c
+	<stdio.h>
+	<stdlib.h>
+

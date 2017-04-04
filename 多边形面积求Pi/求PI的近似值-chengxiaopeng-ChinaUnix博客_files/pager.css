@@ -1,0 +1,42 @@
+ul.yiiPager {
+	line-height: 100%; display: inline;
+}
+ul.yiiPager li {
+	margin: 0px 3px; display: inline;
+}
+ul.yiiPager .page {
+	width: 15px; height: 20px; line-height: 20px;
+}
+ul.yiiPager .page a {
+	border: 1px solid rgb(255, 255, 255); border-image: none; width: 15px; height: 20px; color: rgb(65, 62, 62); line-height: 20px; font-weight: bold; display: inline-block;
+}
+ul.yiiPager .page a {
+	border: 1px solid rgb(243, 247, 249); border-image: none;
+}
+ul.yiiPager .page a:hover {
+	background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); border-image: none; text-decoration: none;
+}
+ul.yiiPager .selected a {
+	background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); border-image: none;
+}
+ul.yiiPager .selected a {
+	background: rgb(255, 255, 255); border: 1px solid rgb(217, 217, 217); border-image: none;
+}
+ul.yiiPager .hidden a {
+	color: rgb(136, 136, 136);
+}
+ul.yiiPager .first {
+	width: 0px; height: 0px; display: none;
+}
+ul.yiiPager .last {
+	width: 0px; height: 0px; display: none;
+}
+ul.yiiPager .previous a {
+	background: url("/image/default/17.png") no-repeat; width: 61px; height: 21px; text-indent: -9999px; vertical-align: 4px; display: inline-block;
+}
+ul.yiiPager .next a {
+	background: url("/image/default/17.png") no-repeat; width: 61px; height: 21px; text-indent: -9999px; vertical-align: 4px; display: inline-block;
+}
+ul.yiiPager .next a {
+	background: url("/image/default/18.png") no-repeat;
+}
